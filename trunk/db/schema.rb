@@ -12,14 +12,14 @@
 ActiveRecord::Schema.define(:version => 20090718215230) do
 
   create_table "cards", :force => true do |t|
-    t.string   "name",        :null => false
-    t.integer  "dollar_cost", :null => false
-    t.integer  "energy_cost", :null => false
-    t.integer  "ready_time",  :null => false
-    t.string   "rules_text",  :null => false
-    t.string   "flavor_text", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "name",                        :null => false
+    t.integer  "dollar_cost", :default => 0,  :null => false
+    t.integer  "energy_cost", :default => 0,  :null => false
+    t.integer  "ready_time",  :default => 0,  :null => false
+    t.string   "rules_text",  :default => "", :null => false
+    t.string   "flavor_text", :default => "", :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
 end
