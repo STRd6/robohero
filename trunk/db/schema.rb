@@ -9,6 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20090718215230) do
+
+  create_table "cards", :force => true do |t|
+    t.string   "name",        :null => false
+    t.integer  "dollar_cost", :null => false
+    t.integer  "energy_cost", :null => false
+    t.integer  "ready_time",  :null => false
+    t.string   "rules_text",  :null => false
+    t.string   "flavor_text", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end
