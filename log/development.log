@@ -1,1 +1,171 @@
-# Logfile created on Sat Jul 18 16:14:58 -0700 2009
+# Logfile created on Sat Jul 18 16:14:58 -0700 2009  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (3.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090327030854')[0m
+Migrating to CreateLogins (20090327030912)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "logins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "identity_url" varchar(255) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE UNIQUE INDEX "index_logins_on_identity_url" ON "logins" ("identity_url")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090327030912')[0m
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "accounts" ADD "last_login" datetime[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mALTER TABLE "accounts" ADD "total_logins" integer DEFAULT 0 NOT NULL[0m
+  [4;35;1mAccount Load (0.2ms)[0m   [0mSELECT * FROM "accounts" [0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime, "total_logins" integer DEFAULT 0 NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("accounts")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "accounts"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime NOT NULL, "total_logins" integer DEFAULT 0 NOT NULL) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("altered_accounts")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDROP TABLE "altered_accounts"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090423003032')[0m
+Migrating to AddReferralsToAccounts (20090426185637)
+  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: Cannot add a NOT NULL column with default value NULL: ALTER TABLE "accounts" ADD "referral_code" varchar(255) NOT NULL[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+Migrating to CreateLogins (20090327030912)
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+Migrating to AddReferralsToAccounts (20090426185637)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: Cannot add a NOT NULL column with default value NULL: ALTER TABLE "accounts" ADD "referral_code" varchar(255) NOT NULL[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090327030854')[0m
+Migrating to CreateLogins (20090327030912)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "logins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "identity_url" varchar(255) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE UNIQUE INDEX "index_logins_on_identity_url" ON "logins" ("identity_url")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090327030912')[0m
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "accounts" ADD "last_login" datetime[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mALTER TABLE "accounts" ADD "total_logins" integer DEFAULT 0 NOT NULL[0m
+  [4;35;1mAccount Load (0.2ms)[0m   [0mSELECT * FROM "accounts" [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime, "total_logins" integer DEFAULT 0 NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("accounts")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "accounts"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime NOT NULL, "total_logins" integer DEFAULT 0 NOT NULL) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("altered_accounts")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDROP TABLE "altered_accounts"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090423003032')[0m
+Migrating to AddReferralsToAccounts (20090426185637)
+  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: Cannot add a NOT NULL column with default value NULL: ALTER TABLE "accounts" ADD "referral_code" varchar(255) NOT NULL[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090327030854')[0m
+Migrating to CreateLogins (20090327030912)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "logins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "identity_url" varchar(255) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE UNIQUE INDEX "index_logins_on_identity_url" ON "logins" ("identity_url")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090327030912')[0m
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "accounts" ADD "last_login" datetime[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mALTER TABLE "accounts" ADD "total_logins" integer DEFAULT 0 NOT NULL[0m
+  [4;35;1mAccount Load (0.2ms)[0m   [0mSELECT * FROM "accounts" [0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime, "total_logins" integer DEFAULT 0 NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("accounts")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "accounts"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime NOT NULL, "total_logins" integer DEFAULT 0 NOT NULL) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("altered_accounts")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDROP TABLE "altered_accounts"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090423003032')[0m
+Migrating to AddReferralsToAccounts (20090426185637)
+  [4;35;1mSQL (0.6ms)[0m   [0mALTER TABLE "accounts" ADD "referral_code" varchar(255)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mALTER TABLE "accounts" ADD "referrer_id" integer[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090426185637')[0m
+Migrating to CreateCards (20090718215230)
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCREATE TABLE "cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "dollar_cost" integer DEFAULT 0 NOT NULL, "energy_cost" integer DEFAULT 0 NOT NULL, "ready_time" integer DEFAULT 0 NOT NULL, "rules_text" varchar(255) DEFAULT '' NOT NULL, "flavor_text" varchar(255) DEFAULT '' NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090718215230')[0m
+Migrating to CreateRobots (20090718231459)
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.5ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090327030854')[0m
+Migrating to CreateLogins (20090327030912)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "logins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "identity_url" varchar(255) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE UNIQUE INDEX "index_logins_on_identity_url" ON "logins" ("identity_url")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090327030912')[0m
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "accounts" ADD "last_login" datetime[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mALTER TABLE "accounts" ADD "total_logins" integer DEFAULT 0 NOT NULL[0m
+  [4;35;1mAccount Load (0.2ms)[0m   [0mSELECT * FROM "accounts" [0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime, "total_logins" integer DEFAULT 0 NOT NULL) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("accounts")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "accounts"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime NOT NULL, "total_logins" integer DEFAULT 0 NOT NULL) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("altered_accounts")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDROP TABLE "altered_accounts"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090423003032')[0m
+Migrating to AddReferralsToAccounts (20090426185637)
+  [4;35;1mSQL (0.6ms)[0m   [0mALTER TABLE "accounts" ADD "referral_code" varchar(255)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mALTER TABLE "accounts" ADD "referrer_id" integer[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090426185637')[0m
+Migrating to CreateCards (20090718215230)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "dollar_cost" integer DEFAULT 0 NOT NULL, "energy_cost" integer DEFAULT 0 NOT NULL, "ready_time" integer DEFAULT 0 NOT NULL, "rules_text" varchar(255) DEFAULT '' NOT NULL, "flavor_text" varchar(255) DEFAULT '' NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090718215230')[0m
+Migrating to CreateRobots (20090718231459)
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCREATE TABLE "robots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "egen" integer, "emax" integer, "armor" integer, "arm_slots" integer, "bod_slots" integer, "misc_slots" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090718231459')[0m
+Migrating to CreateRobotInstances (20090718231513)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "robot_instances" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090718231513')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("accounts")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("cards")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("logins")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_logins_on_identity_url')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("robot_instances")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("robots")[0m
