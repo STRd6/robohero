@@ -9,7 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090718215230) do
+ActiveRecord::Schema.define(:version => 20090718231513) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "nickname"
+    t.string   "email"
+    t.string   "remember_token",            :limit => 40
+    t.datetime "remember_token_expires_at"
+    t.string   "activation_code",           :limit => 40
+    t.datetime "activated_at"
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
+    t.datetime "last_login",                                             :null => false
+    t.integer  "total_logins",                            :default => 0, :null => false
+    t.string   "referral_code"
+    t.integer  "referrer_id"
+  end
 
   create_table "cards", :force => true do |t|
     t.string   "name",                        :null => false
@@ -20,6 +35,32 @@ ActiveRecord::Schema.define(:version => 20090718215230) do
     t.string   "flavor_text", :default => "", :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "logins", :force => true do |t|
+    t.integer  "account_id",   :null => false
+    t.string   "identity_url", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "logins", ["identity_url"], :name => "index_logins_on_identity_url", :unique => true
+
+  create_table "robot_instances", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "robots", :force => true do |t|
+    t.string   "name"
+    t.integer  "egen"
+    t.integer  "emax"
+    t.integer  "armor"
+    t.integer  "arm_slots"
+    t.integer  "bod_slots"
+    t.integer  "misc_slots"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

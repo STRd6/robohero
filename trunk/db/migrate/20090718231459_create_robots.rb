@@ -2,12 +2,12 @@ class CreateRobots < ActiveRecord::Migration
   def self.up
     create_table :robots do |t|
       t.string :name
-      t.int :egen
-      t.int :emax
-      t.int :armor
-      t.int :arm_slots
-      t.int :bod_slots
-      t.int :misc_slots
+      t.integer :egen
+      t.integer :emax
+      t.integer :armor
+      t.integer :arm_slots
+      t.integer :bod_slots
+      t.integer :misc_slots
 
       t.timestamps
     end
