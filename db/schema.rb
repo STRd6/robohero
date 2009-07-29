@@ -9,13 +9,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< .mine
-ActiveRecord::Schema.define(:version => 20090729010741) do
-=======
-ActiveRecord::Schema.define(:version => 20090718231513) do
->>>>>>> .r14
+ActiveRecord::Schema.define(:version => 20090729014327) do
 
-<<<<<<< .mine
   create_table "accounts", :force => true do |t|
     t.string   "nickname"
     t.string   "email"
@@ -38,23 +33,6 @@ ActiveRecord::Schema.define(:version => 20090718231513) do
     t.datetime "updated_at", :null => false
   end
 
-=======
-  create_table "accounts", :force => true do |t|
-    t.string   "nickname"
-    t.string   "email"
-    t.string   "remember_token",            :limit => 40
-    t.datetime "remember_token_expires_at"
-    t.string   "activation_code",           :limit => 40
-    t.datetime "activated_at"
-    t.datetime "created_at",                                             :null => false
-    t.datetime "updated_at",                                             :null => false
-    t.datetime "last_login",                                             :null => false
-    t.integer  "total_logins",                            :default => 0, :null => false
-    t.string   "referral_code"
-    t.integer  "referrer_id"
-  end
-
->>>>>>> .r14
   create_table "cards", :force => true do |t|
     t.string   "name",                        :null => false
     t.integer  "dollar_cost", :default => 0,  :null => false
@@ -64,6 +42,19 @@ ActiveRecord::Schema.define(:version => 20090718231513) do
     t.string   "flavor_text", :default => "", :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "deck_instances", :force => true do |t|
+    t.integer  "deck_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "decks", :force => true do |t|
+    t.string   "name"
+    t.integer  "size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "logins", :force => true do |t|
