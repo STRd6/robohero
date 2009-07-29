@@ -385,3 +385,149 @@ Migrating to CreateRobotInstances (20090718231513)
   [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("robot_instances")[0m
   [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("robots")[0m
 >>>>>>> .r14
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+Migrating to CreateLogins (20090327030912)
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+Migrating to AddReferralsToAccounts (20090426185637)
+Migrating to CreateCards (20090718215230)
+Migrating to CreateRobots (20090718231459)
+Migrating to CreateRobotInstances (20090718231513)
+Migrating to CreateCardInstances (20090729010741)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("card_instances")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("cards")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("logins")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_logins_on_identity_url')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("robot_instances")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("robots")[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+Migrating to CreateLogins (20090327030912)
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+Migrating to AddReferralsToAccounts (20090426185637)
+Migrating to CreateCards (20090718215230)
+Migrating to CreateRobots (20090718231459)
+Migrating to CreateRobotInstances (20090718231513)
+Migrating to CreateCardInstances (20090729010741)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("card_instances")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("cards")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("logins")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_logins_on_identity_url')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("robot_instances")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("robots")[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+Migrating to CreateLogins (20090327030912)
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+Migrating to AddReferralsToAccounts (20090426185637)
+Migrating to CreateCards (20090718215230)
+Migrating to CreateRobots (20090718231459)
+Migrating to CreateRobotInstances (20090718231513)
+Migrating to CreateCardInstances (20090729010741)
+Migrating to CreateDecks (20090729014310)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "decks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "size" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090729014310')[0m
+Migrating to CreateDeckInstances (20090729014327)
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+Migrating to CreateLogins (20090327030912)
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+Migrating to AddReferralsToAccounts (20090426185637)
+Migrating to CreateCards (20090718215230)
+Migrating to CreateRobots (20090718231459)
+Migrating to CreateRobotInstances (20090718231513)
+Migrating to CreateCardInstances (20090729010741)
+Migrating to CreateDecks (20090729014310)
+Migrating to CreateDeckInstances (20090729014327)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+Migrating to CreateLogins (20090327030912)
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+Migrating to AddReferralsToAccounts (20090426185637)
+Migrating to CreateCards (20090718215230)
+Migrating to CreateRobots (20090718231459)
+Migrating to CreateRobotInstances (20090718231513)
+Migrating to CreateCardInstances (20090729010741)
+Migrating to CreateDecks (20090729014310)
+Migrating to CreateDeckInstances (20090729014327)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+Migrating to CreateLogins (20090327030912)
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+Migrating to AddReferralsToAccounts (20090426185637)
+Migrating to CreateCards (20090718215230)
+Migrating to CreateRobots (20090718231459)
+Migrating to CreateRobotInstances (20090718231513)
+Migrating to CreateCardInstances (20090729010741)
+Migrating to CreateDecks (20090729014310)
+Migrating to CreateDeckInstances (20090729014327)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "deck_instances" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "deck_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090729014327')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("card_instances")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("cards")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("deck_instances")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("decks")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("logins")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_logins_on_identity_url')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("robot_instances")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("robots")[0m
