@@ -568,3 +568,113 @@ Migrating to AddHealthToRobot (20090729015624)
   [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_logins_on_identity_url')[0m
   [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("robot_instances")[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("robots")[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-28 19:13:20) [GET]
+
+ActionController::RoutingError (No route matches "/cards" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-07-28 19:15:09) [GET]
+
+ActionController::RoutingError (No route matches "/lgoin" with {:method=>:get}):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-07-28 19:15:14) [GET]
+
+ActionView::MissingTemplate (Missing template sessions/new.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2009-07-28 19:16:04) [GET]
+
+NoMethodError (undefined method `logout_killing_session!' for #<SessionsController:0xb60ab318>):
+  vendor/plugins/the_authenticator/app/controllers/sessions_controller.rb:14:in `destroy'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (27.2ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (2.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateAccounts (20090327030854)
+Migrating to CreateLogins (20090327030912)
+Migrating to AddLoginMetricsToAccounts (20090423003032)
+Migrating to AddReferralsToAccounts (20090426185637)
+Migrating to CreateCards (20090718215230)
+Migrating to CreateRobots (20090718231459)
+Migrating to CreateRobotInstances (20090718231513)
+Migrating to CreateCardInstances (20090729010741)
+Migrating to CreateDecks (20090729014310)
+Migrating to CreateDeckInstances (20090729014327)
+Migrating to AddHealthToRobot (20090729015624)
+Migrating to CreateGames (20090805003529)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090805003529')[0m
+  [4;35;1mSQL (1.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("card_instances")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("cards")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("deck_instances")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("decks")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("games")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mPRAGMA index_list("logins")[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mPRAGMA index_info('index_logins_on_identity_url')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("robot_instances")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("robots")[0m
