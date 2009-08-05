@@ -1,0 +1,62 @@
+.you {
+    width:400px;
+    height:500px;
+    border:2px solid;
+    background-color:blue;
+    float:left;
+    margin:10px;
+
+}
+
+.enemy {
+    width:400px;
+    height:500px;
+    border:2px solid;
+    background-color:red;
+    float:right;
+    margin:10px;
+}
+
+.detail {
+    width:200px;
+    height:300px;
+    border:2px solid;
+    background-color:yellow;
+    float:left;
+    margin:10px;
+}
+
+.deck {
+    width:60px;
+    height:80px;
+    background-color:green;
+    float:left;
+    margin:10px;
+}
+.discard {
+    width:60px;
+    height:80px;
+    background-color:fuchsia;
+    float:left;
+    margin:10px;
+}
+
+.hand {
+    width:500px;
+    height:90px;
+    background-color:teal;
+    float:right;
+    margin:10px;
+
+}
+.card {
+    width:60px;
+    height:80px;
+    background-color:aqua;
+    float:left;
+    border:2px solid;
+}
+
+.clear {
+    clear:both;
+}
