@@ -1,0 +1,41 @@
+Card Name,Energy Cost,Rules Text,Flavor Text,Notes
+Absorb,3,Prevent all energy damage this turn. Gain EN equal to damage prevented.
+Cap and Trade,3,Any player may sell 2EN for $1.
+Capitalism,6,Take up to $3 from target player.
+Catastrophic Failure,4,Destroy target attacking weapon. It deals no damage.
+Charge Shot,3,Add 3E damage to target attack.
+Stifle,4,Reduces an enemy's income to 0 for the next turn
+Decoy,3,"Prevent half attack damage, rounded down."
+Dimensional Rift,7,Target robot is untargetable until end of turn.
+Disable,2,Add 2 cooldowns to target equipment.
+Dispel,6,Destroy target upgrade.
+Dodge,4,Prevent all non-explosive attack damage this turn.
+Fizzle,1,Remove a charge counter from target equipment.
+Fluctuator,3,Draw two cards.
+Focus,0,As an additional cost to play <self> discard a card. Gain 3EN.
+Malfunction,3,Add 4 cooldowns to target equipment.,"Well, there's your problem."
+Monkey Patch,2,As an addition cost to play <self> scrap an equipment. Gain 6HP
+Pawn,1,As an addition cost to play <self> scrap an equipment. Gain $3.
+Reprioritize,1,As an additional cost to play <self> discard a card from your hand. Gain $2.
+Rust-Bringer,4,Reduces targets robot's armor to 0 until end of turn.
+Sabotage,6,Destroy target upgrade or equipment.
+Scan,1,Look at target players hand. Draw a card.
+Scrapweld,1,Remove target weapon in your scrapheap from the game. Gain 2HP.
+Shelter,1,Target robot gains + 2 armor until end of turn.
+Short Circuit,3,Reduces an enemy's energy to 0.
+Sidestep,1,Add 1 cooldown to target equipment.
+Hustle,1,Gain $2.
+Socialism,4,Divide $ evenly amongst all players,,<---- HAHAH WIN
+Spy Ring,4,"Look at target opponents hand, choose a card. That opponent discards the chosen card."
+Trash to Treasure,4,"Remove all weapons in your scrapheap from the game, gain 1 HP for each weapon removed in this way."
+Trip,5,Add one cooldown to each of target robots equipments.
+W.I.N.,4,Remove 2 cooldowns from target equipment.
+Jammed,6,Effect: Weapon. Affected weapon is [Frozen].,Seriously?
+Counter Attack,6,If you received combat damage this turn remove up to three cooldown counters from equipment attached to your robot. You may attack.,Nemo me impune lacessit.
+Take Cover,3, + 8 Armor until end of turn.,Get down!
+Reabsorb,0,Gain energy equal to the amount of energy damage taken this turn.
+Quantum Inversion,8,Until end of turn whenever you would be dealt damage gain that much HP instead.
+Fairytopia,3,Robots cannot this turn.,Discover the magic.
+Ebullience,0, + 2EN
+Dud,3,Remove a charge counter from target equipment.
+Spare,2,Add a charge counter to target equipment.

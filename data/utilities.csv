@@ -1,0 +1,34 @@
+Card Name,Position,Deploy Cost,Ready,Rules Text,Flavor Text
+Blast Shield,Arm,5,0,(1C): +3 X Armor
+Booster,Misc,3,0,(1C): Add 1P damage to target attack.
+Branded,Arm,3,1, +1$ a turn
+Conversion,Misc,4,1, +2$ a turn. Upkeep 1E
+Corporate Name Branding,Body,2,1, +1$ a turn
+Dynamo,Misc,6,0,(4E)(2C): Draw a card
+EMP Pulse,"Misc
+",8,1,(2C)(2E): Add 2 cooldown to target equipment
+Energy Shield,Misc,4,0,(1C)(3E): +3 Armor until end of turn
+Fortune,Misc,5,1,(1C): Draw a card.
+Liquid Nitrogen Cooling System,Misc,7,0,(4E)(1C): Remove one cooldown counter.
+Phase Rifter,Misc,4,1,Immune to Piercing and Explosion damage. Cannot gain energy. Upkeep: 2E
+Plasma Shield,Misc,4,0,(1E)(2C): +2 Armor until end of turn.
+Platinum Casing,Bod,4,0, +2 armor
+Power Converter,Misc,6,0,(1C): Gain 1 EN for every 2E damage taken until end of turn.
+Scouter,Misc,3,0,(1C): Look at target player's hand,What's the scouter say about his power level?,"<--It's over 69,000!!!"
+Ultralight Absorber,Misc,3,1," +1 Egen, 1+ MAX E"
+Vitality,Misc,7,0,(1C): + 1 HP,,<-- Afraid this might stall out the game too much
+Vigor,Misc,7,0,(1C): + 1 EN
+Moxie,Misc,7,0,(1C): + 1 $
+Acid Blaster,Arm,4,2,(2C)(2EN): [Corrode 1].
+Refuge,Misc,5,0,(1C): + 5 armor until end of turn. [Uses 3]
+Enhancer,Misc,3,0,(1E)(1C): Add 2E to target attack.
+
+
+
+
+
+
+
+
+,,,,I marked all the utilities that don't have an activated ability in orange.
+,,,,It might make more sense for theses to be upgrades.
