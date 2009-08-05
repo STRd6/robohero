@@ -1,0 +1,32 @@
+Card Name,Deploy Cost,Type [1],Rules Text,Flavor Text,Notes
+Advanced Research,3,Transient,"Search your stockpile for a card, shuffle your stockpile then put the chosen card on top."
+Advertising,8,Robot, +2$ per turn
+Backup Systems,15,Robot," +10 HP MAX, +5 EN MAX"
+Battery,3,Robot, +2 EN MAX
+Brand Advertising,4,Robot, +1$ per turn
+Certificate of Deposite,3,Global,(Scrap): Gain $4
+Conversion,4,Robot, +2$ a turn. [Maintenance1E]
+Double Agent,5,,Targeted opponent plays with top card of library revealed.
+Energy Fiend,12,Robot,"Immune to energy damage, your energy weapons all have +2 damage"
+Energy Subscription,4,Robot,[Egen] <2>.  [Maintenance $1]
+Expert Engineer,2,Transient,Look at the top three cards of your stockpile and put them back in any order.
+Fast Track,7,Global,All equipment comes into play with one fewer cooldown.
+Faustian Bargain,3,Robot, +1 EN per turn. [Maintenance $1]
+Fuel Cells,5,Robot, +4 EN MAX
+Fusion Cell,4,Robot,All activated abilities cost 1 less EN.,,Cannot reduce cost to less than 0.
+Go for broke,8,Robot,When affected robot's HP is less than 5 that robot's attacks deal double P damage.,,P attacks deal double damage or all attacks deal double P damage?
+I-Tanium Alloy,5,Robot, +2 Armor
+Lead Alloy,4,Equipment,Affected equipment gains an additional cooldown whenever it is activated.
+Pixie Dust,11,Global,All opponents equipment comes into play with one additional cooldown.
+Power Glove,8,Weapon, + 4 attack damage when attacking with an arm weapon.,"""I love the Power Glove. It's so bad!"" - Lucas Barton"
+Rage,7,Robot,Whenever your robot is dealt damage you may remove one cooldown counter from an attached equipment.
+Rapid Prototyping,11,Global,All your equipment comes into play with one fewer cooldown.
+Research and Development,7,Robot,Draw an extra card at the beginning of your turn.
+Reverse Engineer,5,Robot,Comes into play as a copy of target opponent's upgrade.
+Sellout,3,Robot, +1$ per turn. [Maintenance 1EN]
+Slow Play,7,Global,All equipment comes into play with an additional cooldown.
+Solar Panel,3,Robot, +1EN per turn
+Speed suit,8,Weapon,Upgraded weapon's activated abilities cost 1 less cooldown.
+Steel Tax,5,Global,All equipment gains [Maintenance $1]
+Tungsten Alloy Composites,15,Robot, +4 Armor
+Weapons Project,4,Transient,"Search your stockpile for a weapon card, reveal it, and put it into your hand. Then shuffle your stockpile."
