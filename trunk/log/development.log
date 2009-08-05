@@ -1,4 +1,3 @@
-<<<<<<< .mine
 # Logfile created on Sat Jul 18 16:14:58 -0700 2009  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
@@ -212,179 +211,6 @@ Migrating to CreateCardInstances (20090729010741)
   [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_logins_on_identity_url')[0m
   [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("robot_instances")[0m
   [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("robots")[0m
-=======
-# Logfile created on Sat Jul 18 16:14:58 -0700 2009  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
-  [4;36;1mSQL (3.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (2.4ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
-Migrating to CreateAccounts (20090327030854)
-  [4;36;1mSQL (0.7ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
-  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090327030854')[0m
-Migrating to CreateLogins (20090327030912)
-  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "logins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "identity_url" varchar(255) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
-  [4;35;1mSQL (0.5ms)[0m   [0mCREATE UNIQUE INDEX "index_logins_on_identity_url" ON "logins" ("identity_url")[0m
-  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090327030912')[0m
-Migrating to AddLoginMetricsToAccounts (20090423003032)
-  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "accounts" ADD "last_login" datetime[0m
-  [4;36;1mSQL (0.3ms)[0m   [0;1mALTER TABLE "accounts" ADD "total_logins" integer DEFAULT 0 NOT NULL[0m
-  [4;35;1mAccount Load (0.2ms)[0m   [0mSELECT * FROM "accounts" [0m
-  [4;36;1mSQL (0.9ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime, "total_logins" integer DEFAULT 0 NOT NULL) [0m
-  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("accounts")[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "accounts"[0m
-  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime NOT NULL, "total_logins" integer DEFAULT 0 NOT NULL) [0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("altered_accounts")[0m
-  [4;35;1mSQL (0.1ms)[0m   [0mDROP TABLE "altered_accounts"[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090423003032')[0m
-Migrating to AddReferralsToAccounts (20090426185637)
-  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: Cannot add a NOT NULL column with default value NULL: ALTER TABLE "accounts" ADD "referral_code" varchar(255) NOT NULL[0m
-  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
-Migrating to CreateAccounts (20090327030854)
-Migrating to CreateLogins (20090327030912)
-Migrating to AddLoginMetricsToAccounts (20090423003032)
-Migrating to AddReferralsToAccounts (20090426185637)
-  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: Cannot add a NOT NULL column with default value NULL: ALTER TABLE "accounts" ADD "referral_code" varchar(255) NOT NULL[0m
-  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
-  [4;36;1mSQL (2.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (2.3ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
-Migrating to CreateAccounts (20090327030854)
-  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
-  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090327030854')[0m
-Migrating to CreateLogins (20090327030912)
-  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "logins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "identity_url" varchar(255) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
-  [4;35;1mSQL (0.5ms)[0m   [0mCREATE UNIQUE INDEX "index_logins_on_identity_url" ON "logins" ("identity_url")[0m
-  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090327030912')[0m
-Migrating to AddLoginMetricsToAccounts (20090423003032)
-  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "accounts" ADD "last_login" datetime[0m
-  [4;36;1mSQL (0.3ms)[0m   [0;1mALTER TABLE "accounts" ADD "total_logins" integer DEFAULT 0 NOT NULL[0m
-  [4;35;1mAccount Load (0.2ms)[0m   [0mSELECT * FROM "accounts" [0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime, "total_logins" integer DEFAULT 0 NOT NULL) [0m
-  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("accounts")[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "accounts"[0m
-  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime NOT NULL, "total_logins" integer DEFAULT 0 NOT NULL) [0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("altered_accounts")[0m
-  [4;35;1mSQL (0.1ms)[0m   [0mDROP TABLE "altered_accounts"[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090423003032')[0m
-Migrating to AddReferralsToAccounts (20090426185637)
-  [4;35;1mSQL (0.0ms)[0m   [0mSQLite3::SQLException: Cannot add a NOT NULL column with default value NULL: ALTER TABLE "accounts" ADD "referral_code" varchar(255) NOT NULL[0m
-  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
-  [4;36;1mSQL (3.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (1.8ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
-Migrating to CreateAccounts (20090327030854)
-  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
-  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090327030854')[0m
-Migrating to CreateLogins (20090327030912)
-  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "logins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "identity_url" varchar(255) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
-  [4;35;1mSQL (0.4ms)[0m   [0mCREATE UNIQUE INDEX "index_logins_on_identity_url" ON "logins" ("identity_url")[0m
-  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090327030912')[0m
-Migrating to AddLoginMetricsToAccounts (20090423003032)
-  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "accounts" ADD "last_login" datetime[0m
-  [4;36;1mSQL (0.3ms)[0m   [0;1mALTER TABLE "accounts" ADD "total_logins" integer DEFAULT 0 NOT NULL[0m
-  [4;35;1mAccount Load (0.2ms)[0m   [0mSELECT * FROM "accounts" [0m
-  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime, "total_logins" integer DEFAULT 0 NOT NULL) [0m
-  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("accounts")[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "accounts"[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime NOT NULL, "total_logins" integer DEFAULT 0 NOT NULL) [0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("altered_accounts")[0m
-  [4;35;1mSQL (0.1ms)[0m   [0mDROP TABLE "altered_accounts"[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090423003032')[0m
-Migrating to AddReferralsToAccounts (20090426185637)
-  [4;35;1mSQL (0.6ms)[0m   [0mALTER TABLE "accounts" ADD "referral_code" varchar(255)[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mALTER TABLE "accounts" ADD "referrer_id" integer[0m
-  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090426185637')[0m
-Migrating to CreateCards (20090718215230)
-  [4;36;1mSQL (1.1ms)[0m   [0;1mCREATE TABLE "cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "dollar_cost" integer DEFAULT 0 NOT NULL, "energy_cost" integer DEFAULT 0 NOT NULL, "ready_time" integer DEFAULT 0 NOT NULL, "rules_text" varchar(255) DEFAULT '' NOT NULL, "flavor_text" varchar(255) DEFAULT '' NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
-  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090718215230')[0m
-Migrating to CreateRobots (20090718231459)
-  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
-  [4;36;1mSQL (2.9ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
-  [4;35;1mSQL (2.5ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
-  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
-Migrating to CreateAccounts (20090327030854)
-  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
-  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090327030854')[0m
-Migrating to CreateLogins (20090327030912)
-  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "logins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "identity_url" varchar(255) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
-  [4;35;1mSQL (0.5ms)[0m   [0mCREATE UNIQUE INDEX "index_logins_on_identity_url" ON "logins" ("identity_url")[0m
-  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090327030912')[0m
-Migrating to AddLoginMetricsToAccounts (20090423003032)
-  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "accounts" ADD "last_login" datetime[0m
-  [4;36;1mSQL (0.3ms)[0m   [0;1mALTER TABLE "accounts" ADD "total_logins" integer DEFAULT 0 NOT NULL[0m
-  [4;35;1mAccount Load (0.2ms)[0m   [0mSELECT * FROM "accounts" [0m
-  [4;36;1mSQL (0.9ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime, "total_logins" integer DEFAULT 0 NOT NULL) [0m
-  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("accounts")[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "accounts"[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "last_login" datetime NOT NULL, "total_logins" integer DEFAULT 0 NOT NULL) [0m
-  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("altered_accounts")[0m
-  [4;35;1mSQL (0.1ms)[0m   [0mDROP TABLE "altered_accounts"[0m
-  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090423003032')[0m
-Migrating to AddReferralsToAccounts (20090426185637)
-  [4;35;1mSQL (0.6ms)[0m   [0mALTER TABLE "accounts" ADD "referral_code" varchar(255)[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mALTER TABLE "accounts" ADD "referrer_id" integer[0m
-  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090426185637')[0m
-Migrating to CreateCards (20090718215230)
-  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "cards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255) NOT NULL, "dollar_cost" integer DEFAULT 0 NOT NULL, "energy_cost" integer DEFAULT 0 NOT NULL, "ready_time" integer DEFAULT 0 NOT NULL, "rules_text" varchar(255) DEFAULT '' NOT NULL, "flavor_text" varchar(255) DEFAULT '' NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
-  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090718215230')[0m
-Migrating to CreateRobots (20090718231459)
-  [4;36;1mSQL (0.7ms)[0m   [0;1mCREATE TABLE "robots" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "egen" integer, "emax" integer, "armor" integer, "arm_slots" integer, "bod_slots" integer, "misc_slots" integer, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090718231459')[0m
-Migrating to CreateRobotInstances (20090718231513)
-  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "robot_instances" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
-  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090718231513')[0m
-  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
-  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
- FROM sqlite_master
- WHERE type = 'table' AND NOT name = 'sqlite_sequence'
-[0m
-  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("accounts")[0m
-  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("cards")[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("logins")[0m
-  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_logins_on_identity_url')[0m
-  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("robot_instances")[0m
-  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("robots")[0m
->>>>>>> .r14
   [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
@@ -568,82 +394,11 @@ Migrating to AddHealthToRobot (20090729015624)
   [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_logins_on_identity_url')[0m
   [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("robot_instances")[0m
   [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("robots")[0m
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-28 19:13:20) [GET]
-
-ActionController::RoutingError (No route matches "/cards" with {:method=>:get}):
-  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
-  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
-
-Rendering rescues/layout (not_found)
-
-
-Processing ApplicationController#index (for 127.0.0.1 at 2009-07-28 19:15:09) [GET]
-
-ActionController::RoutingError (No route matches "/lgoin" with {:method=>:get}):
-  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
-  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
-
-Rendering rescues/layout (not_found)
-
-
-Processing SessionsController#new (for 127.0.0.1 at 2009-07-28 19:15:14) [GET]
-
-ActionView::MissingTemplate (Missing template sessions/new.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
-  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
-  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
-
-Rendering rescues/layout (internal_server_error)
-
-
-Processing SessionsController#destroy (for 127.0.0.1 at 2009-07-28 19:16:04) [GET]
-
-NoMethodError (undefined method `logout_killing_session!' for #<SessionsController:0xb60ab318>):
-  vendor/plugins/the_authenticator/app/controllers/sessions_controller.rb:14:in `destroy'
-  /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-  /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-  /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-  /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
-  /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
-  /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
-
-Rendered rescues/_trace (27.2ms)
-Rendered rescues/_request_and_response (1.2ms)
-Rendering rescues/layout (internal_server_error)
-  [4;36;1mSQL (2.7ms)[0m   [0;1m SELECT name
+  [4;36;1mSQL (1.8ms)[0m   [0;1m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;35;1mSQL (1.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT version FROM schema_migrations[0m
 Migrating to CreateAccounts (20090327030854)
 Migrating to CreateLogins (20090327030912)
 Migrating to AddLoginMetricsToAccounts (20090423003032)
@@ -652,29 +407,1740 @@ Migrating to CreateCards (20090718215230)
 Migrating to CreateRobots (20090718231459)
 Migrating to CreateRobotInstances (20090718231513)
 Migrating to CreateCardInstances (20090729010741)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "card_instances" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer NOT NULL, "card_id" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090729010741')[0m
 Migrating to CreateDecks (20090729014310)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "decks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "size" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090729014310')[0m
 Migrating to CreateDeckInstances (20090729014327)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "deck_instances" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "deck_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090729014327')[0m
 Migrating to AddHealthToRobot (20090729015624)
+  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "robots" ADD "health" integer[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090729015624')[0m
 Migrating to CreateGames (20090805003529)
-  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
-  [4;35;1mSQL (1.4ms)[0m   [0mCREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
-  [4;36;1mSQL (0.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090805003529')[0m
-  [4;35;1mSQL (1.4ms)[0m   [0m SELECT name
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090805003529')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (1.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
-  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("card_instances")[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("cards")[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("deck_instances")[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("decks")[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("games")[0m
-  [4;36;1mSQL (0.4ms)[0m   [0;1mPRAGMA index_list("logins")[0m
-  [4;35;1mSQL (0.5ms)[0m   [0mPRAGMA index_info('index_logins_on_identity_url')[0m
-  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("robot_instances")[0m
-  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("robots")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("accounts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("card_instances")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("cards")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("deck_instances")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("decks")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("games")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("logins")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_logins_on_identity_url')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("robot_instances")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("robots")[0m
+
+
+Processing Rails::InfoController#properties (for 127.0.0.1 at 2009-08-04 18:11:08) [GET]
+  [4;36;1mSQL (9.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Completed in 106ms (View: 3, DB: 10) | 200 OK [http://localhost/rails/info/properties]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 18:11:12) [GET]
+
+ActionController::RoutingError (No route matches "/games." with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 18:11:16) [GET]
+
+ActionController::RoutingError (No route matches "/games/" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 18:20:22) [GET]
+
+ActionController::RoutingError (No route matches "/games/show" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:24:25) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 0) [0m
+Completed in 81ms (View: 3, DB: 0) | 200 OK [http://localhost/games/show]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:24:33) [GET]
+  Parameters: {"id"=>"show"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 0) [0m
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show]
+  [4;36;1mGame Create (0.5ms)[0m   [0;1mINSERT INTO "games" ("updated_at", "created_at") VALUES('2009-08-05 01:25:53', '2009-08-05 01:25:53')[0m
+  [4;35;1mGame Create (0.5ms)[0m   [0mINSERT INTO "games" ("updated_at", "created_at") VALUES('2009-08-05 01:26:07', '2009-08-05 01:26:07')[0m
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:26:19) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:27:41) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:27:46) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:28:01) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:28:03) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:28:03) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:28:04) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:28:04) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:28:04) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:28:04) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:28:04) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:28:05) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#index (for 127.0.0.1 at 2009-08-04 18:31:31) [GET]
+  [4;35;1mGame Load (0.8ms)[0m   [0mSELECT * FROM "games" [0m
+
+ActionView::MissingTemplate (Missing template games/index.erb in view path app/views:vendor/plugins/the_authenticator/app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+/!\ FAILSAFE /!\  Tue Aug 04 18:39:45 -0700 2009
+  Status: 500 Internal Server Error
+  No such file or directory - /Users/laxd_man/Documents/robohero/vendor/plugins/the_authenticator/config/routes.rb
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:297:in `stat'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:297:in `routes_changed_at'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:296:in `each'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:296:in `routes_changed_at'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:274:in `reload'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:59:in `reload_application'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/reloader.rb:8:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/failsafe.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `synchronize'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:106:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:46:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `each'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/content_length.rb:13:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/chunked.rb:15:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:61:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:34:in `run'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/commands/server.rb:111
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Tue Aug 04 18:39:46 -0700 2009
+  Status: 500 Internal Server Error
+  No such file or directory - /Users/laxd_man/Documents/robohero/vendor/plugins/the_authenticator/config/routes.rb
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:297:in `stat'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:297:in `routes_changed_at'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:296:in `each'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:296:in `routes_changed_at'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:274:in `reload'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:59:in `reload_application'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/reloader.rb:8:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/failsafe.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `synchronize'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:106:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:46:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `each'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/content_length.rb:13:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/chunked.rb:15:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:61:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:34:in `run'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/commands/server.rb:111
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Tue Aug 04 18:39:50 -0700 2009
+  Status: 500 Internal Server Error
+  No such file or directory - /Users/laxd_man/Documents/robohero/vendor/plugins/the_authenticator/config/routes.rb
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:297:in `stat'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:297:in `routes_changed_at'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:296:in `each'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:296:in `routes_changed_at'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:274:in `reload'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:59:in `reload_application'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/reloader.rb:8:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/failsafe.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `synchronize'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:106:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:46:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `each'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/content_length.rb:13:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/chunked.rb:15:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:61:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:34:in `run'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/commands/server.rb:111
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+/!\ FAILSAFE /!\  Tue Aug 04 18:39:51 -0700 2009
+  Status: 500 Internal Server Error
+  No such file or directory - /Users/laxd_man/Documents/robohero/vendor/plugins/the_authenticator/config/routes.rb
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:297:in `stat'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:297:in `routes_changed_at'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:296:in `each'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:296:in `routes_changed_at'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:274:in `reload'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:59:in `reload_application'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/reloader.rb:8:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/failsafe.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `synchronize'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:106:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:46:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `each'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/content_length.rb:13:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/chunked.rb:15:in `call'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:61:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+    /Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:34:in `run'
+    /Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/commands/server.rb:111
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:40:08) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:41:33) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.4ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:41:34) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+
+ActionView::MissingTemplate (Missing template games/show.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:41:41) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.4ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 14ms (View: 8, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:41:43) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:41:44) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:41:45) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:41:45) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:41:45) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:41:45) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:42:09) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:42:10) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:42:46) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:42:46) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:42:47) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:42:47) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:42:58) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 13ms (View: 8, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:43:24) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.3ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 8ms (View: 3, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:43:26) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:43:34) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+
+ActionView::TemplateError (Indenting at the beginning of the document is illegal.) on line #1 of app/views/games/show.html.haml:
+1:     = "hello world"
+
+    app/views/games/show.html.haml:1
+    haml (2.0.9) [v] lib/haml/engine.rb:89:in `initialize'
+    haml (2.0.9) [v] rails/./lib/haml/template/plugin.rb:21:in `new'
+    haml (2.0.9) [v] rails/./lib/haml/template/plugin.rb:21:in `compile'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    haml (2.0.9) [v] rails/./lib/sass/plugin/rails.rb:19:in `process'
+
+Rendered rescues/_trace (116.1ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:43:41) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:43:42) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:43:42) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:43:42) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:44:41) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:44:57) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:45:10) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 3, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:45:10) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:45:10) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:45:10) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mGame Load (0.3ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:45:11) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 69ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:45:14) [GET]
+  Parameters: {"id"=>"show"}
+  [4;35;1mGame Load (0.1ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 0) [0m
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:45:16) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/2]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:45:21) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 6ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:46:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:49:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:50:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+
+ActionView::TemplateError (undefined local variable or method `li' for #<ActionView::Base:0x23eb820>) on line #4 of app/views/layouts/application.html.haml:
+1: %title "ROBOHERO IS AMAZING!!!!!"
+2: %h1= "AMAZING HEADING TEXT!!!!"
+3: 
+4: = li
+5: 
+6: = yield
+
+    app/views/layouts/application.html.haml:4:in `_run_haml_app47views47layouts47application46html46haml'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    haml (2.0.9) [v] rails/./lib/sass/plugin/rails.rb:19:in `process'
+
+Rendered rescues/_trace (114.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:50:54) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:51:23) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:51:24) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:51:31) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:51:43) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:51:49) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:52:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+
+ActionView::TemplateError (undefined method `stylesheet_include_tag' for #<ActionView::Base:0x2392540>) on line #6 of app/views/layouts/application.html.haml:
+3: 
+4: = javascript_include_tag 'jquery', 'jquery-ui'
+5: 
+6: = stylesheet_include_tag 'jquery-ui'
+7: 
+8: = yield
+
+    app/views/layouts/application.html.haml:6:in `_run_haml_app47views47layouts47application46html46haml'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    haml (2.0.9) [v] rails/./lib/sass/plugin/rails.rb:19:in `process'
+
+Rendered rescues/_trace (105.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:52:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+
+ActionView::TemplateError (wrong number of arguments (1 for 2)) on line #6 of app/views/layouts/application.html.haml:
+3: 
+4: = javascript_include_tag 'jquery', 'jquery-ui'
+5: 
+6: = stylesheet_tag 'jquery-ui'
+7: 
+8: = yield
+
+    app/views/layouts/application.html.haml:6:in `stylesheet_tag'
+    app/views/layouts/application.html.haml:6:in `_run_haml_app47views47layouts47application46html46haml'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    haml (2.0.9) [v] rails/./lib/sass/plugin/rails.rb:19:in `process'
+
+Rendered rescues/_trace (43.9ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:52:56) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:53:08) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 1, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:53:58) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 18:54:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:01:32) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 12ms (View: 7, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:03:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:03:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:03:11) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:03:57) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.3ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:04:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:05:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:07:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 11ms (View: 5, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:08:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:08:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:08:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:08:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:08:41) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.4ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:09:40) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 11ms (View: 5, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:10:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:10:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:10:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.3ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:10:09) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:10:10) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:10:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 12ms (View: 6, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:10:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:10:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:10:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:10:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:11:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:11:57) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:12:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:13:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:14:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:15:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 11ms (View: 5, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:15:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:17:32) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:22:09) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:22:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:23:13) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 12ms (View: 7, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:24:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:25:29) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:28:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:28:53) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:28:54) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:30:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:30:28) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:30:29) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:31:20) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:31:21) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:31:21) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:32:56) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:32:56) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:32:56) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:35:50) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:35:50) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:35:51) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:39:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:39:19) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:39:19) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:39:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:39:42) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:39:43) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:40:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:40:34) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:40:34) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:41:18) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:41:18) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:41:19) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:41:58) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:41:58) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:41:58) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:43:48) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+ERROR: compiling _run_haml_app47views47games47show46html46haml RAISED compile error
+/Users/laxd_man/Documents/robohero/app/views/games/show.html.haml:29: syntax error, unexpected kENSURE, expecting $end
+Function body:           def _run_haml_app47views47games47show46html46haml(local_assigns)
+            old_output_buffer = output_buffer;;extend Haml::Helpers;_hamlout = @haml_buffer = Haml::Buffer.new(@haml_buffer, {:format=>:xhtml, :attr_wrapper=>"'", :preserve=>["textarea", "pre"], :autoclose=>["meta", "img", "link", "br", "hr", "input", "area", "param", "col", "base"], :ugly=>false});_erbout = _hamlout.buffer;__in_erb_template = true;;
+_hamlout.push_text("<div class='detail'>\n  <h1>", false, 2);haml_temp = "detail";
+haml_temp = _hamlout.push_script(haml_temp, nil, true, false, false, false);
+
+_hamlout.push_text("</h1>\n</div>\n<div class='you'>\n  <h1>", true, 1);haml_temp = "you";
+haml_temp = _hamlout.push_script(haml_temp, nil, true, false, false, false);_hamlout.push_text("</h1>\n", true); form;
+_hamlout.push_text("  ");haml_temp =  text_field_tag "health", '40';
+haml_temp = _hamlout.push_script(haml_temp, false, false, false, false, false);
+end;
+_hamlout.push_text("</div>\n<div class='enemy'>\n  <h1>", false, 1);haml_temp = "enemy";
+haml_temp = _hamlout.push_script(haml_temp, nil, true, false, false, false);
+
+
+
+_hamlout.push_text("</h1>\n</div>\n<div class='clear'></div>\n<div class='discard'>\n  <h4>", true, 1);haml_temp = "discard";
+haml_temp = _hamlout.push_script(haml_temp, nil, true, false, false, false);
+
+_hamlout.push_text("</h4>\n</div>\n<div class='deck'>\n  <h4>", true, 1);haml_temp = "deck";
+haml_temp = _hamlout.push_script(haml_temp, nil, true, false, false, false);
+
+_hamlout.push_text("</h4>\n</div>\n<div class='card' id='card'>\n  <h4>", true, 1);haml_temp = "card";
+haml_temp = _hamlout.push_script(haml_temp, nil, true, false, false, false);
+
+
+
+_hamlout.push_text("</h4>\n</div>\n<div class='hand'>\n  <h1>", true, 1);haml_temp = "hand";
+haml_temp = _hamlout.push_script(haml_temp, nil, true, false, false, false);
+_hamlout.push_text("</h1>\n</div>\n", true, -1);@haml_buffer = @haml_buffer.upper;_erbout;
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/laxd_man/Documents/robohero/app/views/games/show.html.haml:29:in `compile!'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_view/renderable.rb:61:in `compile'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_view/renderable.rb:28:in `render'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_view/template.rb:194:in `render_template'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_view/base.rb:260:in `render_without_haml'
+/Users/laxd_man/Documents/robohero/vendor/gems/haml-2.0.9/lib/haml/helpers/action_view_mods.rb:14:in `render'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_view/base.rb:343:in `_render_with_layout'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_view/base.rb:257:in `render_without_haml'
+/Users/laxd_man/Documents/robohero/vendor/gems/haml-2.0.9/lib/haml/helpers/action_view_mods.rb:14:in `render'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/base.rb:1241:in `render_for_file'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/base.rb:943:in `render_without_benchmark'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+/Users/laxd_man/Documents/robohero/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Users/laxd_man/Documents/robohero/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+/Users/laxd_man/Documents/robohero/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:51:in `render'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `send'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:135:in `custom'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:179:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:179:in `respond'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:173:in `each'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:173:in `respond'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/Users/laxd_man/Documents/robohero/vendor/plugins/resource_controller/lib/resource_controller/helpers/internal.rb:12:in `response_for'
+/Users/laxd_man/Documents/robohero/vendor/plugins/resource_controller/lib/resource_controller/actions.rb:13:in `show'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/base.rb:1322:in `send'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/base.rb:1322:in `perform_action_without_filters'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/filters.rb:617:in `call_filters'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Users/laxd_man/Documents/robohero/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Users/laxd_man/Documents/robohero/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+/Users/laxd_man/Documents/robohero/vendor/rails/activesupport/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/flash.rb:141:in `perform_action'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/base.rb:523:in `send'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/base.rb:523:in `process_without_filters'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `sass_old_process'
+/Users/laxd_man/Documents/robohero/vendor/gems/haml-2.0.9/rails/../lib/sass/plugin/rails.rb:19:in `process'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/base.rb:391:in `process'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/base.rb:386:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:433:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:88:in `dispatch'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:111:in `_call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:82:in `initialize'
+/Users/laxd_man/Documents/robohero/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/Users/laxd_man/Documents/robohero/vendor/rails/activerecord/lib/active_record/query_cache.rb:9:in `cache'
+/Users/laxd_man/Documents/robohero/vendor/rails/activerecord/lib/active_record/query_cache.rb:28:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/head.rb:9:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/methodoverride.rb:24:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/params_parser.rb:15:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/rewindable_input.rb:25:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:93:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/reloader.rb:9:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/failsafe.rb:11:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `synchronize'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/lock.rb:11:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:106:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:46:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `each'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/urlmap.rb:40:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/content_length.rb:13:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/chunked.rb:15:in `call'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:61:in `process'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+/Users/laxd_man/Documents/robohero/vendor/rails/actionpack/lib/action_controller/vendor/rack-1.0/rack/handler/mongrel.rb:34:in `run'
+/Users/laxd_man/Documents/robohero/vendor/rails/railties/lib/commands/server.rb:111
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/Users/laxd_man/Documents/robohero/app/views/games/show.html.haml:29: syntax error, unexpected kENSURE, expecting $end) on line #29 of app/views/games/show.html.haml:
+26:   %h1= "hand"
+
+    app/views/games/show.html.haml:29:in `compile!'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    haml (2.0.9) [v] rails/./lib/sass/plugin/rails.rb:19:in `process'
+
+Rendered rescues/_trace (104.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:44:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.3ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 44ms (View: 38, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:44:07) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:44:07) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:46:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 14ms (View: 8, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:46:28) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:46:28) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:47:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 14ms (View: 9, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:47:39) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:47:39) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:49:55) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 16ms (View: 11, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:49:55) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:49:55) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:56:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:56:19) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:56:19) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:59:11) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 9ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:59:11) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:59:11) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 19:59:57) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 69ms (View: 63, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:59:57) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 19:59:57) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 20:00:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.3ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 20:00:35) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 20:00:35) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 20:01:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mGame Load (0.2ms)[0m   [0mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 15ms (View: 9, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 20:01:05) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 20:01:05) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing GamesController#show (for 127.0.0.1 at 2009-08-04 20:03:36) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mGame Load (0.2ms)[0m   [0;1mSELECT * FROM "games" WHERE ("games"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering games/show
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://localhost/games/show/1]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 20:03:36) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-08-04 20:03:36) [GET]
+
+ActionController::RoutingError (No route matches "/javascripts/ui-draggable.js" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
