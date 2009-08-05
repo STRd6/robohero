@@ -41,6 +41,11 @@
 .deck
   %h4= "deck"
 
-
 .hand
   %h1= "hand"
+
+- Card.all.each do |card|
+  .card
+    %strong= card.name
+    %p= card.rules_text
+    %em= card.flavor_text
