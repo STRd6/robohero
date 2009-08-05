@@ -1,0 +1,101 @@
+Card Name,Position,Deploy Cost,Damage,Net Damage,Ready,Cooldown,Rules Text,Flavor Text,Notes,Damage/turn,(Damage/turn) / (deploy cost),Uses,Activations in 5 Turns,Usage Limited Activations in 5 Turns,Cumulative Damage in 5 turns,Usage Limited 5 Turn Damage / Deploy Cost
+Arctic Magnum,Body,5,4P,4,1,1,,,,4,0.8,,4,4,16,3.2
+Armor of thorns,Body,12,15E,15,4,4,(5EN): Destroy target weapon.,,,3,0.25,,1,1,15,1.25
+Barrett,Arm,3,3P,3,1,1,,,,3,1,,4,4,12,4
+Beam rifle,Arm,6,4E,4,0,2,,,,2,0.33333333333333,,3,3,12,2
+Bey Blade,Arm,3,2P,2,0,1,,,,2,0.66666666666667,,5,5,10,3.33333333333333
+Bird killer,Bod,1,1P,1,1,1,,,,1,1,,4,4,4,4
+Dagon,Arm,8,6E,6,2,1,,,,6,0.75,,3,3,18,2.25
+Death Ray,Arm,15,20E,20,4,4,,,,5,0.33333333333333,,1,1,20,1.33333333333333
+Devastator,Body,10,5P,5,0,1,,,,5,0.5,,5,5,25,2.5
+Double Dragon,Arm,6,5E,5,1,1,,,,5,0.83333333333333,,4,4,20,3.33333333333333
+Drill,Arm,2,1P,1,1,1,[Armor Piercing],,,1,0.5,,4,4,4,2
+Energy Blade,Arm,5,3E,3,0,1,Adds an additional E damage for every 3 EN <equipper> has stored.,,,3,0.6,,5,5,15,3
+Fire and Fury,Body,8,10X,10,1,2,[Blastback 4X][Locked],,,5,0.625,,2,2,20,2.5
+Flac Cannon,Bod,6,4X,4,1,1,,,,4,0.66666666666667,,4,4,16,2.66666666666667
+Flame Thrower,Arm,2,5X,5,3,3,,,,1,0.5,,1,1,5,2.5
+Fusion Cannon,Bod,10,24E,24,3,5,,,,4,0.4,,1,1,24,2.4
+Gauss Rifle,Arm,10,8E,8,1,2,,,,4,0.4,,2,2,16,1.6
+Guildenstern,Arm,7,6P,6,2,1,[Legendary],,,6,0.85714285714286,,3,3,18,2.57142857142857
+Hailstorm,Arm,5,6X,6,1,1,[Uses 2],,,6,1.2,2,4,2,12,2.4
+Hyper Blade,Arm,3,6P,6,1,2,,,,3,1,,2,2,12,4
+Julie Rocket,Arm,6,8X,8,1,1,[Indestructable][Uses 1],,,8,1.33333333333333,1,4,1,8,1.33333333333333
+Jumper Cables,Arm,1,1E,1,1,1,[Leech] 1,,,1,1,,4,4,4,4
+Laser Rifle,Arm,3,2E,2,0,1,,,,2,0.66666666666667,,5,5,10,3.33333333333333
+M9000,Arm,8,12X,12,1,1,[Uses 1],Over one hundred times more powerful than an M80.,,12,1.5,1,4,1,12,1.5
+Machine Gun,Arm,2,2P,2,0,1,,,,2,1,,5,5,10,5
+Nuke,Bod,10,16X,16,3,3,[Uses 1],,,5,0.5,1,1,1,16,1.6
+Overpower,Arm,3,4E,4,1,1,[Blastback 2E],,,4,1.33333333333333,,4,4,16,5.33333333333333
+Phantom,Arm,5,0E,0,1,1,[Uses 4] [Powerful 2],,,0,0,4,4,4,0,0
+Phase Cannon,Arm,1,4E,4,1,3,,,,1,1,,2,2,8,8
+Phaser,Arm,5,5E,5,0,2,[Frozen]. (1E): Remove a cooldown from <self>.,,,2,0.4,,3,3,15,3
+Phoenix Ignition,Arm,12,12E,12,4,4,(3C)(5EN): Destroy target weapon.,,maybe only destroy arm weapons with this ability,3,0.25,,1,1,12,1
+Prism,Arm,6,6E,6,2,2,Each time <self> is fired add a charge counter to it. [Powerful 1],,,3,0.5,,2,2,12,2
+Railgun,Arm,8,6P,6,2,2,[Armor Piercing],,,3,0.375,,2,2,12,1.5
+Remix to Phoenix Ignition,Arm,12,12P,12,4,4,(1C)(5EN): Return target weapon from your [scrapheap] to your hand.,,,3,0.25,,1,1,12,1
+Rosencrantz,Arm,7,6X,6,2,1,[Legendary] If also attacking with Guildenstern add 6E damage.,,,6,0.85714285714286,,3,3,18,2.57142857142857
+Steel Claws,Arm,2,2P,2,0,1,[Locked],,,2,1,,5,5,10,5
+Tesla Coil,Arm,6,4E,4,1,1,(1C)(2E): Adds 1 cooldown to target equipment.,,,4,0.66666666666667,,4,4,16,2.66666666666667
+Three's Company,Bod,9,10X,10,1,2,[Uses 3],We've been waiting for you...,,5,0.55555555555556,3,2,2,20,2.22222222222222
+Unstable Furion,Body,9,16E,16,1,3,[Locked] At the end of your turn <self> deals twice the number of cooldown counters on it to <equipper> in explosive damage.,,,5,0.55555555555556,,2,2,32,3.55555555555556
+Useful Chamber,Body,6,nE,n,2,n/2,n is the number of cooldown counters on all your equipment.,,,2,0.33333333333333,,#VALUE!,#VALUE!,#VALUE!,#VALUE!
+Thief's Cannon,Arm,5,2P,2,1,1,[Collateral: Gain $1 from damaged robot],,,2,0.4,,4,4,8,1.6
+,,,,,,,,,,2,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,2,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
+,,,,,,,,,,,,,#DIV/0!,#DIV/0!,#DIV/0!,#DIV/0!
