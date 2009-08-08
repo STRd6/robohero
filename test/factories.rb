@@ -4,3 +4,7 @@ Factory.define :card do |card|
   card.energy_cost 0
   card.ready_time 0
 end
+
+Factory.define :game do |game|
+  
+end
