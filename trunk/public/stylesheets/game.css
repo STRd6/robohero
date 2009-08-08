@@ -55,8 +55,41 @@
     background-color:aqua;
     float:left;
     border:2px solid;
+    font-size:10px;
+    font-family: fantasy;
 }
 
 .clear {
     clear:both;
+}
+
+.slot {
+  width:90px;
+  height:120px;
+  background-color:silver;
+  float:left;
+  margin:20px;
+}
+
+.counterCreator {
+  width:100px;
+  height:100px;
+  background-color:black;
+  color:white;
+  float:left;
+  font-size:9px;
+}
+.counter {
+  width:10px;
+  height:10px;
+  background-color:green;
+  z-index:2;
+}
+
+.counterDropZone {
+  float:left;
+}
+
+.hidden {
+  display:none;
 }
