@@ -7,7 +7,7 @@ class DeckListTest < ActiveSupport::TestCase
     end
 
     should "have a version" do
-      #TODO
+      assert @deck_list.version
     end
 
     should "have a name" do
