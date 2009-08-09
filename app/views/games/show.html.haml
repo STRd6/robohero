@@ -1,3 +1,5 @@
+#gameId.id
+  %p.hidden= @game.id
 .detail
   %h1= "detail"
 
@@ -66,4 +68,4 @@
       %strong= card.name
       %p= card.rules_text
       %em= card.flavor_text
-      .id.hidden= card.id
+      %p.id.hidden= card.id

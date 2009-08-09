@@ -1,5 +1,6 @@
 $(function(){
     var url = 'http://localhost:3000/';
+    var gameId = $('#gameId').children().html();
     var data = 'zomg test';
     function callback() {alert("wow it worked");}
     $('.card').draggable({revert:'invalid'});
@@ -11,15 +12,15 @@ $(function(){
     $('.counterCreator').click(function(){createCounter()});
     $('.discard').droppable({
       drop: function(event, ui) {
-        var id = ui.draggable.context.children[3].innerHTML;
+        var id = $(ui.draggable).children('.id').html();
         ui.draggable.remove();
-        $.post(url + 'cards/' + id + '/discard', data, callback());
+        $.post(url + 'games/' + gameId + '/discard/' + id, data, callback());
         
     }})
     $('.slot').droppable({
         drop: function(event, ui) {
-          var id = ui.draggable.context.children[3].innerHTML;
-          $.post(url + 'cards/' + id + '/played', data, callback());
+          var id = $(ui.draggable).children('.id').html();
+          $.post(url + 'games/' + gameId + '/played/' + id, data, callback());
           ui.draggable.appendTo($(event.target));
           ui.draggable.css({top:-30,left:10});
       }})
