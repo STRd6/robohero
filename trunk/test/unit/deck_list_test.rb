@@ -18,6 +18,10 @@ class DeckListTest < ActiveSupport::TestCase
       assert @deck_list.account
     end
 
+    should "have cards" do
+      assert @deck_list.cards
+    end
+
     should "have a unique name per account" do
       #TODO
     end

@@ -12,4 +12,12 @@ class DeckList < ActiveRecord::Base
   def initialize_card_data
     self.card_data ||= []
   end
+
+  def cards
+    Card.find card_data
+  end
+
+  def cards=(card_list)
+    self.card_data = card_list.map(&:id)
+  end
 end
