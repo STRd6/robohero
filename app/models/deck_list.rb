@@ -1,4 +1,6 @@
 class DeckList < ActiveRecord::Base
+  acts_as_versioned
+
   belongs_to :account
 
   validates_presence_of :account
