@@ -13,6 +13,10 @@ Factory.define :account do |account|
   
 end
 
+Factory.define :facebook_login do |login|
+  login.association :account
+end
+
 Factory.sequence(:deck_list_name) do |n|
   "DECK_#{n}"
 end
