@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090903030719) do
+ActiveRecord::Schema.define(:version => 20090904053041) do
 
   create_table "accounts", :force => true do |t|
     t.string   "nickname"
@@ -76,6 +76,24 @@ ActiveRecord::Schema.define(:version => 20090903030719) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "link_events", :force => true do |t|
+    t.integer  "link_id",                  :null => false
+    t.string   "session_id", :limit => 32, :null => false
+    t.string   "action",     :limit => 16, :null => false
+    t.datetime "created_at",               :null => false
+  end
+
+  create_table "links", :force => true do |t|
+    t.integer  "account_id",                :null => false
+    t.integer  "target_id"
+    t.string   "target_type"
+    t.string   "token",       :limit => 32, :null => false
+    t.string   "channel",     :limit => 16, :null => false
+    t.datetime "created_at",                :null => false
+  end
+
+  add_index "links", ["token"], :name => "index_links_on_token", :unique => true
 
   create_table "logins", :force => true do |t|
     t.integer  "account_id",   :null => false

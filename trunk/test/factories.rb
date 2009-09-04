@@ -17,6 +17,15 @@ Factory.define :facebook_login do |login|
   login.association :account
 end
 
+Factory.define :link do |link|
+  link.association :account
+  link.channel "test"
+end
+
+Factory.define :link_event do |link_event|
+  link_event.association :link
+end
+
 Factory.sequence(:deck_list_name) do |n|
   "DECK_#{n}"
 end
