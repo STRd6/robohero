@@ -23,7 +23,11 @@ class DeckListTest < ActiveSupport::TestCase
     end
 
     should "have a unique name per account" do
-      #TODO
+      assert_raise ActiveRecord::RecordInvalid do
+        Factory :deck_list,
+          :account => @deck_list.account,
+          :name => @deck_list.name
+      end
     end
   end
 end
