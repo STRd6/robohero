@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090809185857) do
+ActiveRecord::Schema.define(:version => 20090903030719) do
 
   create_table "accounts", :force => true do |t|
     t.string   "nickname"
@@ -63,6 +63,13 @@ ActiveRecord::Schema.define(:version => 20090809185857) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "version"
+  end
+
+  create_table "facebook_logins", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "fb_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "games", :force => true do |t|
