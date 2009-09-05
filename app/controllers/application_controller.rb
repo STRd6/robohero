@@ -10,23 +10,20 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-  before_filter :set_up_user
+  before_filter :set_up_account
 
   helper_method :fb_uid
 
   private
 
-  def set_up_user
+  def set_up_account
+    #TODO: Check cookies
+
     #TODO: Don't make FB only, eventually
+    # Check FB
     if set_facebook_session
       @current_account = FacebookLogin.establish_account(facebook_session.user.uid)
     end
-  end
-
-  def establish_credentials
-    #TODO:
-    # Check cookies
-    # Check FB
     # Twitter?
     # Other Auth mechanisms?
   end
