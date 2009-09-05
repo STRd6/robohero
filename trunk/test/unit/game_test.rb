@@ -1,8 +1,17 @@
 require 'test_helper'
 
 class GameTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  context "a game" do
+    setup do
+      @game = Factory :game
+      @game.players = [
+        Factory(:player, :game => @game),
+        Factory(:player, :game => @game),
+      ]
+    end
+
+    should "be able to start" do
+      assert @game.start
+    end
   end
 end

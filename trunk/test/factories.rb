@@ -9,6 +9,10 @@ Factory.define :game do |game|
   
 end
 
+Factory.define :player do |player|
+  player.association :account
+end
+
 Factory.define :account do |account|
   
 end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090904053041) do
+ActiveRecord::Schema.define(:version => 20090905233000) do
 
   create_table "accounts", :force => true do |t|
     t.string   "nickname"
@@ -72,6 +72,18 @@ ActiveRecord::Schema.define(:version => 20090904053041) do
     t.datetime "updated_at"
   end
 
+  create_table "game_events", :force => true do |t|
+    t.integer  "game_id",     :null => false
+    t.integer  "stack_depth", :null => false
+    t.integer  "player",      :null => false
+    t.integer  "datum_id",    :null => false
+    t.string   "datum_type",  :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "game_events", ["game_id"], :name => "index_game_events_on_game_id"
+
   create_table "games", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -103,6 +115,15 @@ ActiveRecord::Schema.define(:version => 20090904053041) do
   end
 
   add_index "logins", ["identity_url"], :name => "index_logins_on_identity_url", :unique => true
+
+  create_table "players", :force => true do |t|
+    t.integer  "game_id",    :null => false
+    t.integer  "account_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "players", ["game_id"], :name => "index_players_on_game_id"
 
   create_table "robot_instances", :force => true do |t|
     t.datetime "created_at"
