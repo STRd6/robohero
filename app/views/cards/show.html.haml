@@ -1,2 +1,5 @@
 %h2= @card.name
-%p= @card.rules_text
+- %w[name dollar_cost energy_cost ready_time rules_text flavor_text].each do |attr|
+  %p
+    %strong= attr.titleize + ":"
+    = @card[attr]
