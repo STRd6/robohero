@@ -35,12 +35,14 @@ ActionController::Routing::Routes.draw do |map|
 
   # See how all your routes lay out with "rake routes"
 
+  map.collection '/cards/collection', :controller => 'cards', :action => 'collection'
+
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
   map.resources :games, :cards
 
-  map.link '/q/:token', :controller => 'home', :action => 'process_link'
+  map.link '/q/:token', :controller => 'main', :action => 'process_link'
   
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

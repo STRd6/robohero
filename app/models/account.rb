@@ -5,6 +5,8 @@ class Account < ActiveRecord::Base
 
   has_many :logins, :dependent => :destroy
 
+  has_many :card_instances
+
   attr_accessible :nickname, :email, :referrer_code
 
   validates_numericality_of :total_logins, :only_integer => true
