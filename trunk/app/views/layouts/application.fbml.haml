@@ -1,3 +1,11 @@
-%fb:header RoboHero
-= render :partial => 'fb/user'
-= yield
+%fb:fbml
+  %fb:header RoboHero
+  %fb:tabs
+    = fb_tab_item('main')
+    = fb_tab_item('games')
+    = fb_tab_item('cards')
+    -#%fb:tab-item{:href => url_for(:controller => 'games'), :title => 'Games',  :selected => 'true'}
+    -#%fb:tab-item{:href => url_for(:controller => 'cards'), :title => 'Cards'}
+  = render :partial => 'fb/user', :locals => {:uid => fb_uid}
+  = h fb_user.interests.to_s
+  = yield

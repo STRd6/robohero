@@ -1,0 +1,2 @@
+- fb_user.friends.each do |friend|
+  = render :partial => 'fb/user', :locals => {:uid => friend.uid}

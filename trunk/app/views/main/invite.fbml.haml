@@ -1,0 +1,2 @@
+%fb:request-form{:action => url_for(:controller => 'main', :action => 'invite'), :method => "POST", :invite => "true", :type => "RoboHero", :content => "Your text goes here. #{h "<fb:req-choice url=\"strdevo\" label=\"Authorize My Application\""}"}
+  %fb:multi-friend-selector{:showborder => "false", :actiontext => "Invite your friends to RoboHero."}

@@ -1,2 +1,6 @@
-%fb:profile-pic{:uid => "loggedinuser"}
-%fb:user-status{:uid => "loggedinuser", :linked => 'true'}
+.user
+  %fb:profile-pic{:uid => uid}
+  %strong
+    %fb:name{:uid => uid}
+  %fb:user-status{:uid => uid, :linked => 'true'}
+
