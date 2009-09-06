@@ -1,0 +1,11 @@
+= form.error_messages
+- %w[name dollar_cost energy_cost ready_time].each do |attr|
+  %p
+    = form.label attr
+    = form.text_field attr
+- %w[rules_text flavor_text].each do |attr|
+  %p
+    = form.label attr
+    = form.text_area attr
+
+= submit_tag "Create"
