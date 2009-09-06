@@ -3,69 +3,11 @@
 .detail
   %h1= "detail"
 
-.you
-  %h1= "you"
-  - form_tag do
-    %p
-      = label_tag "health"
-      = text_field_tag "health", '40', {:size=>'3'}
-      = label_tag "money"
-      = text_field_tag "money", '2', {:size=>'3'}
-    %p
-      = label_tag "energy"
-      = text_field_tag "energy", '0', {:size=>'3'}
-      = label_tag "armor"
-      = text_field_tag 'armor', '1', {:size=>'3'}
-  .slot
-    %p= "slot1"
-  .slot
-    %p= "slot2"
-  .slot
-    %p= "slot3"
-  .slot
-    %p= "slot4"
+- @game.players.each do |player|
+  = render :partial => 'player', :locals => {:player => player}
 
 .counterCreator
   %h1= "zOMg MAke Moar Counters"
 .counterDropZone
 
-.enemy
-  %h1= "enemy"
-  - form_tag do
-    %p
-      = label_tag "health"
-      = text_field_tag "health", '40', {:size=>'3'}
-      = label_tag "money"
-      = text_field_tag "money", '2', {:size=>'3'}
-    %p
-      = label_tag "energy"
-      = text_field_tag "energy", '0', {:size=>'3'}
-      = label_tag "armor"
-      = text_field_tag 'armor', '1', {:size=>'3'}
-  .slot
-    %p= "slot1"
-  .slot
-    %p= "slot2"
-  .slot
-    %p= "slot3"
-  .slot
-    %p= "slot4"
-
 .clear
-
-.discard
-  %h4= "discard"
-
-.deck
-  %h4= "deck"
-
-.hand
-  %h1= "hand"
-
-#allCards
-  - Card.all.each do |card|
-    .card
-      %strong= card.name
-      %p= card.rules_text
-      %em= card.flavor_text
-      %p.id.hidden= card.id
