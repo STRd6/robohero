@@ -135,6 +135,9 @@ ActiveRecord::Schema.define(:version => 20090906224246) do
     t.integer  "armor",      :null => false
     t.integer  "energy",     :null => false
     t.integer  "money",      :null => false
+    t.integer  "body_slots", :null => false
+    t.integer  "arm_slots",  :null => false
+    t.integer  "misc_slots", :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -148,7 +151,7 @@ ActiveRecord::Schema.define(:version => 20090906224246) do
     t.integer  "health_max", :default => 30, :null => false
     t.integer  "armor",      :default => 0,  :null => false
     t.integer  "arm_slots",  :default => 0,  :null => false
-    t.integer  "bod_slots",  :default => 0,  :null => false
+    t.integer  "body_slots", :default => 0,  :null => false
     t.integer  "misc_slots", :default => 0,  :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false

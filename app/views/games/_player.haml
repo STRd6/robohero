@@ -1,5 +1,5 @@
 .player
-  %h1= "you"
+  %h1= player.name
   - form_tag do
     %p
       = label_tag "health"
@@ -11,15 +11,17 @@
       = text_field_tag "energy", player.energy, {:size=>'3'}
       = label_tag "armor"
       = text_field_tag 'armor', player.armor, {:size=>'3'}
-  .slot
-    %p= "slot1"
-  .slot
-    %p= "slot2"
-  .slot
-    %p= "slot3"
-  .slot
-    %p= "slot4"
 
+  - player.body_slots.times do |i|
+    .slot
+      %p= "body#{i+1}"
+  - player.arm_slots.times do |i|
+    .slot
+      %p= "arm#{i+1}"
+  - player.misc_slots.times do |i|
+    .slot
+      %p= "misc#{i+1}"
+  
   .discard
     %h4= "discard"
 
