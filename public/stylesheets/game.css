@@ -1,20 +1,10 @@
-.you {
+.player {
     width:400px;
     height:500px;
     border:2px solid;
-    background-color:blue;
     float:left;
     margin:10px;
 
-}
-
-.enemy {
-    width:400px;
-    height:500px;
-    border:2px solid;
-    background-color:red;
-    float:right;
-    margin:10px;
 }
 
 .detail {
@@ -41,14 +31,6 @@
     margin:10px;
 }
 
-.hand {
-    width:500px;
-    height:90px;
-    background-color:teal;
-    float:right;
-    margin:10px;
-
-}
 .card {
     width:60px;
     height:80px;

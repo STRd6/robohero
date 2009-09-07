@@ -11,6 +11,15 @@ end
 
 Factory.define :player do |player|
   player.association :account
+  player.association :robot
+  player.name "Test Player"
+end
+
+Factory.define :robot do |robot|
+  robot.name "Test Robot"
+  robot.armor 1
+  robot.energy_max 10
+  robot.health_max 40
 end
 
 Factory.define :account do |account|

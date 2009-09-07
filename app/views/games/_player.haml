@@ -3,14 +3,14 @@
   - form_tag do
     %p
       = label_tag "health"
-      = text_field_tag "health", '40', {:size=>'3'}
+      = text_field_tag "health", player.health, {:size=>'3'}
       = label_tag "money"
-      = text_field_tag "money", '2', {:size=>'3'}
+      = text_field_tag "money", player.money, {:size=>'3'}
     %p
       = label_tag "energy"
-      = text_field_tag "energy", '0', {:size=>'3'}
+      = text_field_tag "energy", player.energy, {:size=>'3'}
       = label_tag "armor"
-      = text_field_tag 'armor', '1', {:size=>'3'}
+      = text_field_tag 'armor', player.armor, {:size=>'3'}
   .slot
     %p= "slot1"
   .slot
