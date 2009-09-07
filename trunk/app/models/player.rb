@@ -28,6 +28,12 @@ class Player < ActiveRecord::Base
   private
 
   def setup_player
+    self.name ||= account.nickname
+
+    self.body_slots = robot.body_slots
+    self.arm_slots = robot.arm_slots
+    self.misc_slots = robot.misc_slots
+
     self.health = robot.health_max
     self.armor = robot.armor
     self.money = 2
