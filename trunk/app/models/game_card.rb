@@ -1,4 +1,6 @@
 class GameCard < ActiveRecord::Base
+  include RandomScope
+
   belongs_to :location, :polymorphic => true
   belongs_to :card
 
