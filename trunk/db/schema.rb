@@ -129,28 +129,29 @@ ActiveRecord::Schema.define(:version => 20090906224246) do
   create_table "players", :force => true do |t|
     t.integer  "game_id",    :null => false
     t.integer  "account_id", :null => false
+    t.integer  "robot_id",   :null => false
+    t.string   "name",       :null => false
+    t.integer  "health",     :null => false
+    t.integer  "armor",      :null => false
+    t.integer  "energy",     :null => false
+    t.integer  "money",      :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "players", ["game_id"], :name => "index_players_on_game_id"
 
-  create_table "robot_instances", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "robots", :force => true do |t|
-    t.string   "name"
-    t.integer  "egen"
-    t.integer  "emax"
-    t.integer  "armor"
-    t.integer  "arm_slots"
-    t.integer  "bod_slots"
-    t.integer  "misc_slots"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "health"
+    t.string   "name",                       :null => false
+    t.integer  "egen",       :default => 2,  :null => false
+    t.integer  "energy_max", :default => 6,  :null => false
+    t.integer  "health_max", :default => 30, :null => false
+    t.integer  "armor",      :default => 0,  :null => false
+    t.integer  "arm_slots",  :default => 0,  :null => false
+    t.integer  "bod_slots",  :default => 0,  :null => false
+    t.integer  "misc_slots", :default => 0,  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
 end
