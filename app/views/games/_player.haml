@@ -21,12 +21,12 @@
   - player.misc_slots.times do |i|
     .slot
       %p= "misc#{i+1}"
-  
-  .discard
-    %h4= "discard"
 
   .deck
-    %h4= "deck"
+    %h4= "deck (#{player.cards_in_deck.size})"
+  
+  .discard
+    %h4= "discard (#{player.cards_in_discard.size})"
 
   .hand
     %h1= "hand"

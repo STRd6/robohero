@@ -10,7 +10,12 @@ class Player < ActiveRecord::Base
   end
 
   def draw(amount)
-    
+    transaction do
+      cards_in_deck.random(amount).each do |card|
+        card.location_type = "Hand"
+        card.save!
+      end
+    end
   end
 
   def cards_in_hand
@@ -22,7 +27,7 @@ class Player < ActiveRecord::Base
   end
 
   def cards_in_discard
-    GameCard.in_deck(self.id)
+    GameCard.in_discard(self.id)
   end
 
   private
