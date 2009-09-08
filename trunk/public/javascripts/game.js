@@ -1,7 +1,7 @@
 $(function(){
     var url = 'http://localhost:3000/';
     var gameId = $('#gameId').children().html();
-    var data = 'zomg test';
+    var data = {authenticity_token: $token};
     function callback() {alert("wow it worked");}
     $('.card').draggable({revert:'invalid'});
     $('.card').click(function(){
