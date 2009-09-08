@@ -10,4 +10,9 @@ class Game < ActiveRecord::Base
       player.draw 7
     end
   end
+
+  def discard(game_card)
+    game_card.location_type = "Discard"
+    game_card.save!
+  end
 end
