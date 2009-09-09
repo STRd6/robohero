@@ -1,0 +1,9 @@
+= form.error_messages
+
+%p
+  = form.label :name
+  = form.text_field :name
+
+= form.collection_select :card_data, Card.all, :id, :name, {}, {:multiple => true, :size => 40}
+
+= submit_tag "Create"
