@@ -4,8 +4,8 @@ class Account < ActiveRecord::Base
   belongs_to :referrer, :class_name => "Account"
 
   has_many :logins, :dependent => :destroy
-
   has_many :card_instances
+  has_many :deck_lists
 
   attr_accessible :nickname, :email, :referrer_code
 
