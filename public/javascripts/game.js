@@ -39,6 +39,11 @@ $(function(){
           
         }
     })
+
+    $('.deck').click(function(){
+      var id = $(this).children('.id').html();
+      $.post(url + 'games/' + gameId + '/draw/' + id, data);
+    });
 });
 
 function addCardToHand(){
