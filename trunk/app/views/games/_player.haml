@@ -24,17 +24,17 @@
 
   .deck
     %h4= "deck (#{player.cards_in_deck.size})"
+    .id.hidden= player.id
   
   .discard
     %h4= "discard (#{player.cards_in_discard.size})"
+    - player.cards_in_discard.each do |card|
+      = render :partial => 'card', :locals => {:card => card}
+    .id.hidden= player.id
 
   .hand
     %h1= "hand"
     - player.cards_in_hand.each do |card|
-      .card
-        %strong= card.name
-        %p= card.rules_text
-        %em= card.flavor_text
-        %p.id.hidden= card.id
+      = render :partial => 'card', :locals => {:card => card}
 
   .clear
