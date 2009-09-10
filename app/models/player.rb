@@ -33,7 +33,7 @@ class Player < ActiveRecord::Base
   private
 
   def setup_player
-    self.name ||= account.nickname
+    self.name ||= account.nickname || "Gueast"
 
     self.body_slots = robot.body_slots
     self.arm_slots = robot.arm_slots
