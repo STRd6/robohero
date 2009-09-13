@@ -35,6 +35,6 @@
   .hand
     %h1= "hand"
     - player.cards_in_hand.each do |card|
-      = render :partial => 'card', :locals => {:card => card}
+      = render :partial => 'card', :object => card
 
   .clear

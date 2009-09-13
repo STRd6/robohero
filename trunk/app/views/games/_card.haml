@@ -1,5 +1,12 @@
 .card
-  %strong= card.name
+  .titlebar
+    %strong= card.name
+    - if card.energy_cost > 0
+      .icon.energy
+      = card.energy_cost
+    - if card.money_cost > 0
+      .icon.money
+      = card.money_cost
   %p= card.rules_text
   %em= card.flavor_text
   %p.id.hidden= card.id
