@@ -3,6 +3,8 @@ class Game < ActiveRecord::Base
   has_many :game_events
   belongs_to :current_event
 
+  named_scope :open, :conditions => {}
+
   def start
     # Each player shuffles deck and draws 7 cards
     players.each do |player|
@@ -17,7 +19,7 @@ class Game < ActiveRecord::Base
   end
 
   def join(account, deck_list)
-    unless object.players.map(&:account_id).include? account.id
+    unless players.map(&:account_id).include? account.id
       player = players.build(:game => self, :account => account, :robot => Robot.first)
       player.deck_list = deck_list
     end

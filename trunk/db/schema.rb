@@ -95,9 +95,13 @@ ActiveRecord::Schema.define(:version => 20090906224246) do
   add_index "game_events", ["game_id"], :name => "index_game_events_on_game_id"
 
   create_table "games", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name",                         :null => false
+    t.boolean  "open",       :default => true, :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
+
+  add_index "games", ["open"], :name => "index_games_on_open"
 
   create_table "link_events", :force => true do |t|
     t.integer  "link_id",                  :null => false
