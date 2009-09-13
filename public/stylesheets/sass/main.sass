@@ -1,0 +1,18 @@
+=icon(!url)
+  :background transparent url(/images/icons/#{!url}.png) no-repeat
+
+.icon
+  :width 16px
+  :height 16px
+  &.energy
+    +icon("lightning")
+  &.money
+    +icon("coins")
+  &.cooldown
+    +icon("time")
+  &.armor
+    +icon("shield")
+  &.utility
+    +icon("wrench")
+  &.weapor
+    +icon("bomb")
