@@ -8,5 +8,10 @@ class GameCard < ActiveRecord::Base
   named_scope :in_deck, lambda {|player_id| {:conditions => {:location_id => player_id, :location_type => "Deck"}}}
   named_scope :in_discard, lambda {|player_id| {:conditions => {:location_id => player_id, :location_type => "Discard"}}}
 
-  delegate :name, :rules_text, :flavor_text, :to => :card
+  delegate :name,
+    :rules_text,
+    :flavor_text,
+    :money_cost,
+    :energy_cost,
+    :to => :card
 end
