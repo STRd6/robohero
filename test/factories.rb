@@ -6,7 +6,7 @@ Factory.define :card do |card|
 end
 
 Factory.define :game do |game|
-  
+  game.name "Test Game"
 end
 
 Factory.define :player do |player|
