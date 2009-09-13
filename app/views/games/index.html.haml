@@ -1,3 +1,4 @@
 = render :partial => 'header'
 
-= render :partial => Game.open.all
+%ul.games
+  = render :partial => Game.open.all
