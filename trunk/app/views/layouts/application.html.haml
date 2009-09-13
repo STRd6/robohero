@@ -2,11 +2,22 @@
 %html
   %head
     %title "ROBOHERO IS AMAZING!!!!!"
-    = stylesheet_link_tag 'jquery-ui', 'game', 'main'
+    = stylesheet_link_tag 'jquery-ui', 'game', 'main', 'icon'
     = javascript_include_tag 'jquery', 'jquery-ui'
     = javascript_include_tag 'game'
     = javascript_tag "var $token = '#{form_authenticity_token}';"
   %body
+    %p.right
+      - if current_account
+        Logged in as:
+        = current_account.nickname
+      - else
+        = link_to "Log in?", login_path
+    
+      - Account.all.each do |account|
+        %br
+        = link_to account.nickname, :controller => "accounts", :action => "assume", :id => account.id
+
     = yield
     .footer
       = link_to "Icons", "http://famfamfam.com/"

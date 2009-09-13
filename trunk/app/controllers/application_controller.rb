@@ -24,9 +24,6 @@ class ApplicationController < ActionController::Base
     # Check FB
     if set_facebook_session
       self.current_account = FacebookLogin.establish_account(facebook_session.user.uid)
-    else
-      #TODO: Debug
-      self.current_account = Account.first
     end
     # Twitter?
     # Other Auth mechanisms?
