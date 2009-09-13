@@ -15,4 +15,11 @@ class Game < ActiveRecord::Base
     game_card.location_type = "Discard"
     game_card.save!
   end
+
+  def join(account, deck_list)
+    unless object.players.map(&:account_id).include? account.id
+      player = players.build(:game => self, :account => account, :robot => Robot.first)
+      player.deck_list = deck_list
+    end
+  end
 end

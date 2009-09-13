@@ -12,16 +12,13 @@ class GamesController < ResourceController::Base
   end
 
   def join
-    unless object.players.map(&:account_id).include? current_account.id
-      #TODO: Refactor and load deck list
-      object.players << [Player.new(:game => object, :account => current_account, :robot => Robot.first)]
-    end
-
+    object.join(current_account, current_account.deck_lists.first)
+    object.save!
+    
     redirect_to object
   end
 
   create.before do
-    #TODO: Refactor and load deck list
-    object.players = [Player.new(:game => object, :account => current_account, :robot => Robot.first)]
+    object.join(current_account, current_account.deck_lists.first)
   end
 end
