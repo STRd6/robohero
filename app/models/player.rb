@@ -5,6 +5,8 @@ class Player < ActiveRecord::Base
   
   before_validation_on_create :setup_player
 
+  attr_accessor :deck_list
+
   def shuffle_deck
     
   end
@@ -28,6 +30,12 @@ class Player < ActiveRecord::Base
 
   def cards_in_discard
     GameCard.in_discard(self.id)
+  end
+  
+  def create_deck
+    deck_list.cards.each do |card|
+      GameCard.create!(:card => card, :location_type => "Deck", :location_id => id)
+    end if deck_list
   end
 
   private

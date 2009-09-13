@@ -11,6 +11,22 @@ class PlayerTest < ActiveSupport::TestCase
       assert @player.account
     end
 
+    context "with deck list" do
+      setup do
+        @deck_list = Factory(:deck_list, :account => @player.account)
+        @deck_list.cards = [Factory(:card), Factory(:card)]
+        @deck_list.save!
+        @player = Factory(:player,
+          :deck_list => @deck_list,
+          :game => Factory(:game)
+        )
+      end
+
+      should "load decklist from account" do
+        assert_equal @deck_list.cards, @player.cards_in_deck.map(&:card)
+      end
+    end
+
     context "with cards" do
       setup do
         GameCard.create(:location_id => @player.id, :location_type => "Hand", :card => Factory(:card))
