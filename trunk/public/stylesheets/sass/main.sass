@@ -1,5 +1,9 @@
 =icon(!url)
   :background transparent url(/images/icons/#{!url}.png) no-repeat
+  &.add
+    :background transparent url(/images/icons/#{!url}_add.png) no-repeat
+  &.subtract
+    :background transparent url(/images/icons/#{!url}_delete.png) no-repeat
 
 .icon
   :width 16px
@@ -17,3 +21,5 @@
     +icon("wrench")
   &.weapor
     +icon("bomb")
+  &.health
+    +icon("heart")
