@@ -5,6 +5,13 @@ class Player < ActiveRecord::Base
   
   before_validation_on_create :setup_player
 
+  validates_numericality_of :armor
+  validates_numericality_of :energy, :greater_than_or_equal_to => 0
+  validates_numericality_of :money, :greater_than_or_equal_to => 0
+  validates_numericality_of :body_slots, :greater_than_or_equal_to => 0
+  validates_numericality_of :arm_slots, :greater_than_or_equal_to => 0
+  validates_numericality_of :misc_slots, :greater_than_or_equal_to => 0
+
   attr_accessor :deck_list
 
   def shuffle_deck
@@ -37,13 +44,17 @@ class Player < ActiveRecord::Base
   end
 
   def deploy(game_card, slot_type, slot_id)
-    #TODO: Pay for card
+    transaction do
+      self.money -= game_card.money_cost
+      self.energy -= game_card.energy_cost
 
-    game_card.update_attributes!(
-      :location_type => "#{slot_type}",
-      :location_id => id,
-      :position => slot_id
-    )
+      game_card.update_attributes!(
+        :location_type => "#{slot_type}",
+        :location_id => id,
+        :position => slot_id
+      )
+      save!
+    end
   end
   
   def create_deck
