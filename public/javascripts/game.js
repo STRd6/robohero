@@ -20,7 +20,13 @@ $(function(){
     $('.slot').droppable({
         drop: function(event, ui) {
           var id = $(ui.draggable).children('.id').html();
-          $.post(url + 'games/' + gameId + '/played/' + id, data, callback());
+          var slot_type = $(this).children('p').html();
+          var position = $(this).children('.position').html();
+
+          $.post(url + 'games/' + gameId + '/played/' + id, $.extend({
+            slot_type: slot_type,
+            position: position
+          }, data), callback());
           ui.draggable.appendTo($(event.target));
           ui.draggable.css({top:-30,left:10});
       }})

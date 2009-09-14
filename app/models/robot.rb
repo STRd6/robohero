@@ -1,4 +1,6 @@
 class Robot < ActiveRecord::Base
+  SLOT_TYPES = %w[body arm misc]
+
   def self.import_default_robots
     testbot = find_or_initialize_by_name("Testbot")
     testbot.armor = 1
