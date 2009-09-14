@@ -12,15 +12,13 @@
       .icon.armor
       = text_field_tag 'armor', player.armor, {:size=>'3'}
 
-  - player.body_slots.times do |i|
-    .slot
-      %p= "body#{i+1}"
-  - player.arm_slots.times do |i|
-    .slot
-      %p= "arm#{i+1}"
-  - player.misc_slots.times do |i|
-    .slot
-      %p= "misc#{i+1}"
+  - Robot::SLOT_TYPES.each do |slot_type|
+    - player.send("#{slot_type}_slots").times do |i|
+      .slot
+        %p= slot_type
+        .position= i
+        - if card = player.card_in_slot(slot_type, i).first
+          = render :partial => 'card', :object => card
 
   .deck
     %h4= "deck (#{player.cards_in_deck.size})"

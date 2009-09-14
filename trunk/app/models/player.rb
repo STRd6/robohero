@@ -21,15 +21,29 @@ class Player < ActiveRecord::Base
   end
 
   def cards_in_hand
-    GameCard.in_hand(self.id)
+    GameCard.in_hand(id)
   end
 
   def cards_in_deck
-    GameCard.in_deck(self.id)
+    GameCard.in_deck(id)
   end
 
   def cards_in_discard
-    GameCard.in_discard(self.id)
+    GameCard.in_discard(id)
+  end
+
+  def card_in_slot(slot_type, position)
+    GameCard.in_slot(id, slot_type, position)
+  end
+
+  def deploy(game_card, slot_type, slot_id)
+    #TODO: Pay for card
+
+    game_card.update_attributes!(
+      :location_type => "#{slot_type}",
+      :location_id => id,
+      :position => slot_id
+    )
   end
   
   def create_deck

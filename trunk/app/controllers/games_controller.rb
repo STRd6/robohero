@@ -18,6 +18,13 @@ class GamesController < ResourceController::Base
     redirect_to object
   end
 
+  def played
+    player = object.players.find_by_account_id(current_account.id)
+    game_card = player.cards_in_hand.find(params[:target_id])
+    
+    player.deploy(game_card, params[:slot_type], params[:position])
+  end
+
   create.before do
     object.join(current_account, current_account.deck_lists.first)
   end
