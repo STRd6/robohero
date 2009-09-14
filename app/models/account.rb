@@ -12,7 +12,9 @@ class Account < ActiveRecord::Base
   validates_numericality_of :total_logins, :only_integer => true
   validates_presence_of :last_login, :referral_code
 
-  before_validation_on_create :set_last_login_time, :initialize_referral_code
+  before_validation_on_create :set_last_login_time, 
+    :initialize_referral_code,
+    :add_default_deck_list
 
   def to_s
     nickname || "No Name"
@@ -46,5 +48,9 @@ class Account < ActiveRecord::Base
 
   def initialize_referral_code
     self.referral_code ||= make_token
+  end
+
+  def add_default_deck_list
+    deck_lists.build(:name => "Default", :cards => Card.all, :account => self)
   end
 end

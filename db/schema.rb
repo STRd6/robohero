@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20090906224246) do
     t.integer  "armor",      :null => false
     t.integer  "energy",     :null => false
     t.integer  "money",      :null => false
+    t.integer  "egen",       :null => false
     t.integer  "body_slots", :null => false
     t.integer  "arm_slots",  :null => false
     t.integer  "misc_slots", :null => false

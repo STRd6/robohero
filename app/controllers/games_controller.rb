@@ -4,6 +4,11 @@ class GamesController < ResourceController::Base
 
   before_filter :login_required, :ensure_deck_list
 
+  def start
+    object.start
+    redirect_to object
+  end
+
   def discard
     object.discard(GameCard.find(params[:target_id]))
     render :ok
@@ -25,6 +30,12 @@ class GamesController < ResourceController::Base
     game_card = player.cards_in_hand.find(params[:target_id])
     
     player.deploy(game_card, params[:slot_type], params[:position])
+  end
+
+  def begin_turn
+    player = object.players.find_by_account_id(current_account.id)
+    player.begin_turn
+    redirect_to object
   end
 
   create.before do

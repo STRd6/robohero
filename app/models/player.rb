@@ -6,6 +6,7 @@ class Player < ActiveRecord::Base
   before_validation_on_create :setup_player
 
   validates_numericality_of :armor
+  validates_numericality_of :egen, :greater_than_or_equal_to => 0
   validates_numericality_of :energy, :greater_than_or_equal_to => 0
   validates_numericality_of :money, :greater_than_or_equal_to => 0
   validates_numericality_of :body_slots, :greater_than_or_equal_to => 0
@@ -56,6 +57,12 @@ class Player < ActiveRecord::Base
       save!
     end
   end
+
+  def begin_turn
+    self.money += game.income
+    self.energy += egen
+    save!
+  end
   
   def create_deck
     deck_list.cards.each do |card|
@@ -74,6 +81,7 @@ class Player < ActiveRecord::Base
 
     self.health = robot.health_max
     self.armor = robot.armor
+    self.egen = robot.egen
     self.money = 2
     self.energy = 0
   end
