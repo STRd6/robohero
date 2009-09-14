@@ -7,6 +7,7 @@
     = javascript_include_tag 'game'
     = javascript_tag "var $token = '#{form_authenticity_token}';"
   %body
+    = render :partial => 'common/header'
     %p.right
       - if current_account
         Logged in as:
@@ -15,14 +16,15 @@
       - else
         = link_to "Log in?", login_path
     
-      - Account.all.each do |account|
-        %br
-        = link_to account.nickname, :controller => "accounts", :action => "assume", :id => account.id
-
+    .clear
     .notice= flash[:notice]
     .error= flash[:error]
     = yield
     .footer
+      All Accounts
+      - Account.all.each do |account|
+        %br
+        = link_to account.nickname, :controller => "accounts", :action => "assume", :id => account.id
       = link_to "Icons", "http://famfamfam.com/"
       .icon.energy
       .icon.money

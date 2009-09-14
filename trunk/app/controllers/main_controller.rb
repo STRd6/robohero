@@ -18,4 +18,8 @@ class MainController < ApplicationController
       redirect_to '/'
     end
   end
+
+  def index
+    
+  end
 end
