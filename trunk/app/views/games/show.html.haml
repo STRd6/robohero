@@ -3,6 +3,9 @@
 .detail
   %h1= "detail"
 
+= link_to "Start Game", :action => "start", :id => @game.id
+= link_to "Begin Turn", :action => "begin_turn", :id => @game.id
+
 - @game.players.each do |player|
   = render :partial => 'player', :locals => {:player => player}
 

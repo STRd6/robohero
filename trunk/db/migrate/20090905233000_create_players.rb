@@ -11,6 +11,8 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :energy, :null => false
       t.integer :money, :null => false
 
+      t.integer :egen, :null => false
+
       t.integer :body_slots, :null => false
       t.integer :arm_slots, :null => false
       t.integer :misc_slots, :null => false

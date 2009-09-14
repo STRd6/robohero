@@ -6,10 +6,17 @@ class Game < ActiveRecord::Base
   named_scope :open, :conditions => {}
 
   def start
-    # Each player shuffles deck and draws 7 cards
-    players.each do |player|
-      player.shuffle_deck
-      player.draw 7
+    transaction do
+      #TODO: Add game state
+      if self.open?
+        # Each player shuffles deck and draws 7 cards
+        players.each do |player|
+          player.shuffle_deck
+          player.draw 7
+        end
+        self.open = false
+        save!
+      end
     end
   end
 
@@ -23,5 +30,9 @@ class Game < ActiveRecord::Base
       player = players.build(:game => self, :account => account, :robot => Robot.first)
       player.deck_list = deck_list
     end
+  end
+
+  def income
+    2
   end
 end
