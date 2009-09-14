@@ -1,5 +1,5 @@
 $(function(){
-    var url = 'http://localhost:3000/';
+    var url = '/';
     var gameId = $('#gameId').children().html();
     var data = {authenticity_token: $token};
     function callback() {alert("wow it worked");}
