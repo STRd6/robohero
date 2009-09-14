@@ -122,14 +122,29 @@ ActiveRecord::Schema.define(:version => 20090906224246) do
 
   add_index "links", ["token"], :name => "index_links_on_token", :unique => true
 
-  create_table "logins", :force => true do |t|
+  create_table "open_id_authentication_associations", :force => true do |t|
+    t.integer "issued"
+    t.integer "lifetime"
+    t.string  "handle"
+    t.string  "assoc_type"
+    t.binary  "server_url"
+    t.binary  "secret"
+  end
+
+  create_table "open_id_authentication_nonces", :force => true do |t|
+    t.integer "timestamp",  :null => false
+    t.string  "server_url"
+    t.string  "salt",       :null => false
+  end
+
+  create_table "open_id_logins", :force => true do |t|
     t.integer  "account_id",   :null => false
     t.string   "identity_url", :null => false
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
 
-  add_index "logins", ["identity_url"], :name => "index_logins_on_identity_url", :unique => true
+  add_index "open_id_logins", ["identity_url"], :name => "index_open_id_logins_on_identity_url", :unique => true
 
   create_table "players", :force => true do |t|
     t.integer  "game_id",    :null => false

@@ -2,6 +2,8 @@ class GamesController < ResourceController::Base
   include FacebookController
   actions :all, :except => :destroy
 
+  before_filter :login_required, :ensure_deck_list
+
   def discard
     object.discard(GameCard.find(params[:target_id]))
     render :ok

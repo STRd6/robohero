@@ -36,4 +36,15 @@ class ApplicationController < ActionController::Base
   def fb_user
     facebook_session.user if facebook_session
   end
+
+  def ensure_deck_list
+    if current_account && current_account.deck_lists.first
+      if current_account.deck_lists.first.valid?
+      else
+
+      end
+    else
+
+    end
+  end
 end
