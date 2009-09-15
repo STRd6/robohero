@@ -8,4 +8,8 @@ class Card < ActiveRecord::Base
   def money_cost
     dollar_cost
   end
+
+  def parsed_rules_text
+    @parsed_rules_text ||= RoboHeroParser.new.parse(rules_text)
+  end
 end

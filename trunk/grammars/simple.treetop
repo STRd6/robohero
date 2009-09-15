@@ -1,0 +1,9 @@
+grammar Simple
+  rule cooldown_cost
+    val:([0-9]*) 'C' {
+      def cost_hash
+        {:cooldown => val.text_value.to_i}
+      end
+    }
+  end
+end

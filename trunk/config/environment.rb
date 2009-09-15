@@ -10,6 +10,7 @@ Rails::Initializer.run do |config|
   config.gem 'thoughtbot-shoulda', :lib => 'shoulda'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl'
   config.gem 'haml', :lib => 'haml', :version => '2.2.3'
+  config.gem 'treetop'
   
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers

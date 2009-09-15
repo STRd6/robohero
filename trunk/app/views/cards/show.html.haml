@@ -1,5 +1,18 @@
-%h2= @card.name
+%h2
+  = @card.name
+
 - %w[name dollar_cost energy_cost ready_time rules_text flavor_text].each do |attr|
   %p
     %strong= attr.titleize + ":"
     = @card[attr]
+
+- if @card.parsed_rules_text
+  %p
+    %strong Parsed:
+    - @card.parsed_rules_text.cost_array.each do |cost|
+      %span.icon{:class => cost.first}
+      = cost.last
+    == :
+    = @card.parsed_rules_text.effect.text_value
+  = debug @card.parsed_rules_text.cost_array
+    
