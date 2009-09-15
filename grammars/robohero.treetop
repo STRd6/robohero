@@ -1,0 +1,47 @@
+grammar RoboHero
+  rule activated_ability
+    costs ": " effect {
+      def cost_array
+        costs.cost_array
+      end
+    }
+  end
+
+  rule costs
+    cost_element* {
+      def cost_array
+        elements.map do |element|
+          element.cost
+        end
+      end
+    }
+  end
+
+  rule cost_element
+    '(' (energy_cost / cooldown_cost) ')' {
+      def cost
+        elements[1].cost
+      end
+    }
+  end
+
+  rule energy_cost
+    cost_amount:([0-9]+) ('EN' / 'E') {
+      def cost
+        [ 'energy', cost_amount.text_value.to_i ]
+      end
+    }
+  end
+
+  rule cooldown_cost
+    cost_amount:([0-9]+) 'C' {
+      def cost
+        [ 'cooldown', cost_amount.text_value.to_i ]
+      end
+    }
+  end
+
+  rule effect
+    (.)*
+  end
+end
