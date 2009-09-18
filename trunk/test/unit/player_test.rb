@@ -13,9 +13,7 @@ class PlayerTest < ActiveSupport::TestCase
 
     context "with deck list" do
       setup do
-        @deck_list = Factory(:deck_list, :account => @player.account)
-        @deck_list.cards = [Factory(:card), Factory(:card)]
-        @deck_list.save!
+        @deck_list = default_deck_list
         @player = Factory(:player,
           :deck_list => @deck_list,
           :game => Factory(:game)
