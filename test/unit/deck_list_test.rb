@@ -3,7 +3,7 @@ require 'test_helper'
 class DeckListTest < ActiveSupport::TestCase
   context "a deck list" do
     setup do
-      @deck_list = Factory :deck_list
+      @deck_list = default_deck_list
     end
 
     should "have a version" do

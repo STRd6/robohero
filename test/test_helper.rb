@@ -4,6 +4,10 @@ require 'test_help'
 
 require File.expand_path(File.dirname(__FILE__) + "/factories.rb")
 
+# Load all the card data for testing
+CardImporter.import_all
+Robot.import_default_robots
+
 class ActiveSupport::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
@@ -37,4 +41,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def default_deck_list
+    @default_deck_list ||= Factory(:deck_list, :cards => (0..40).map{Factory(:card)})
+  end
 end
