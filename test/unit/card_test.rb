@@ -17,5 +17,15 @@ class CardTest < ActiveSupport::TestCase
     should "have a non-negative ready time" do
       assert @card.ready_time >= 0
     end
+
+    context "parsing" do
+      setup do
+        @card = Factory :card, :rules_text => "(5E)(2C): Draw a card."
+      end
+
+      should "be able to parse data" do
+        assert @card.parsed_rules_text
+      end
+    end
   end
 end
