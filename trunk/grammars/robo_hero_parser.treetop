@@ -1,4 +1,24 @@
 grammar RoboHero
+  rule rules_data
+    keyword_ability* attack_elements:attack* activated_ability_elements:activated_ability* {
+      def attacks
+        attack_elements.elements
+      end
+
+      def activated_abilities
+        activated_ability_elements.elements
+      end
+    }
+  end
+
+  rule keyword_ability
+    "[" "]"
+  end
+
+  rule attack
+    "[Attack " activated_ability "]"
+  end
+
   rule activated_ability
     costs ": " effect {
       def cost_array
@@ -42,6 +62,6 @@ grammar RoboHero
   end
 
   rule effect
-    (.)*
+    [a-zA-Z0-9_ \.]*
   end
 end

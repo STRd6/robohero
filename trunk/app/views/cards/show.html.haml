@@ -9,10 +9,20 @@
 - if @card.parsed_rules_text
   %p
     %strong Parsed:
-    - @card.parsed_rules_text.cost_array.each do |cost|
-      %span.icon{:class => cost.first}
-      = cost.last
-    == :
-    = @card.parsed_rules_text.effect.text_value
-  = debug @card.parsed_rules_text.cost_array
+    - @card.parsed_rules_text.attacks.each do |attack|
+      - activated_ability = attack.activated_ability
+      - activated_ability.cost_array.each do |cost|
+        Attack:
+        %span.icon{:class => cost.first}
+        = cost.last
+      == :
+      = activated_ability.effect.text_value
+      = debug activated_ability.cost_array
+    - @card.parsed_rules_text.activated_abilities.each do |activated_ability|
+      - activated_ability.cost_array.each do |cost|
+        %span.icon{:class => cost.first}
+        = cost.last
+      == :
+      = activated_ability.effect.text_value
+      = debug activated_ability.cost_array
     

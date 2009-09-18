@@ -5,7 +5,181 @@ module RoboHero
   include Treetop::Runtime
 
   def root
-    @root || :activated_ability
+    @root || :rules_data
+  end
+
+  module RulesData0
+    def attack_elements
+      elements[1]
+    end
+
+    def activated_ability_elements
+      elements[2]
+    end
+  end
+
+  module RulesData1
+    def attacks
+      attack_elements.elements
+    end
+
+    def activated_abilities
+      activated_ability_elements.elements
+    end
+  end
+
+  def _nt_rules_data
+    start_index = index
+    if node_cache[:rules_data].has_key?(index)
+      cached = node_cache[:rules_data][index]
+      @index = cached.interval.end if cached
+      return cached
+    end
+
+    i0, s0 = index, []
+    s1, i1 = [], index
+    loop do
+      r2 = _nt_keyword_ability
+      if r2
+        s1 << r2
+      else
+        break
+      end
+    end
+    r1 = instantiate_node(SyntaxNode,input, i1...index, s1)
+    s0 << r1
+    if r1
+      s3, i3 = [], index
+      loop do
+        r4 = _nt_attack
+        if r4
+          s3 << r4
+        else
+          break
+        end
+      end
+      r3 = instantiate_node(SyntaxNode,input, i3...index, s3)
+      s0 << r3
+      if r3
+        s5, i5 = [], index
+        loop do
+          r6 = _nt_activated_ability
+          if r6
+            s5 << r6
+          else
+            break
+          end
+        end
+        r5 = instantiate_node(SyntaxNode,input, i5...index, s5)
+        s0 << r5
+      end
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(RulesData0)
+      r0.extend(RulesData1)
+    else
+      @index = i0
+      r0 = nil
+    end
+
+    node_cache[:rules_data][start_index] = r0
+
+    r0
+  end
+
+  module KeywordAbility0
+  end
+
+  def _nt_keyword_ability
+    start_index = index
+    if node_cache[:keyword_ability].has_key?(index)
+      cached = node_cache[:keyword_ability][index]
+      @index = cached.interval.end if cached
+      return cached
+    end
+
+    i0, s0 = index, []
+    if has_terminal?("[", false, index)
+      r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
+      @index += 1
+    else
+      terminal_parse_failure("[")
+      r1 = nil
+    end
+    s0 << r1
+    if r1
+      if has_terminal?("]", false, index)
+        r2 = instantiate_node(SyntaxNode,input, index...(index + 1))
+        @index += 1
+      else
+        terminal_parse_failure("]")
+        r2 = nil
+      end
+      s0 << r2
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(KeywordAbility0)
+    else
+      @index = i0
+      r0 = nil
+    end
+
+    node_cache[:keyword_ability][start_index] = r0
+
+    r0
+  end
+
+  module Attack0
+    def activated_ability
+      elements[1]
+    end
+
+  end
+
+  def _nt_attack
+    start_index = index
+    if node_cache[:attack].has_key?(index)
+      cached = node_cache[:attack][index]
+      @index = cached.interval.end if cached
+      return cached
+    end
+
+    i0, s0 = index, []
+    if has_terminal?("[Attack ", false, index)
+      r1 = instantiate_node(SyntaxNode,input, index...(index + 8))
+      @index += 8
+    else
+      terminal_parse_failure("[Attack ")
+      r1 = nil
+    end
+    s0 << r1
+    if r1
+      r2 = _nt_activated_ability
+      s0 << r2
+      if r2
+        if has_terminal?("]", false, index)
+          r3 = instantiate_node(SyntaxNode,input, index...(index + 1))
+          @index += 1
+        else
+          terminal_parse_failure("]")
+          r3 = nil
+        end
+        s0 << r3
+      end
+    end
+    if s0.last
+      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
+      r0.extend(Attack0)
+    else
+      @index = i0
+      r0 = nil
+    end
+
+    node_cache[:attack][start_index] = r0
+
+    r0
   end
 
   module ActivatedAbility0
@@ -324,11 +498,10 @@ module RoboHero
 
     s0, i0 = [], index
     loop do
-      if index < input_length
-        r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
+      if has_terminal?('\G[a-zA-Z0-9_ \\.]', true, index)
+        r1 = true
         @index += 1
       else
-        terminal_parse_failure("any character")
         r1 = nil
       end
       if r1
