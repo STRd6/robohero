@@ -1,12 +1,16 @@
 .card
   .titlebar
     %strong= card.name
-    - if card.energy_cost > 0
-      .icon.energy
-      = card.energy_cost
-    - if card.money_cost > 0
-      .icon.money
-      = card.money_cost
-  %p= card.rules_text
-  %em= card.flavor_text
-  %p.id.hidden= card.id
+    %span.costs
+      - if card.energy_cost > 0
+        = card.energy_cost
+        .icon.energy
+      - if card.money_cost > 0
+        = card.money_cost
+        .icon.money
+  %strong= card.cooldown_counters
+  .icon.cooldown
+  .textbox
+    %p= render :partial => 'cards/parsed_data', :locals => {:card => card}
+    %em= card.flavor_text
+    %p.id.hidden= card.id

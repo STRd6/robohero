@@ -4,6 +4,7 @@ class CreateGameCards < ActiveRecord::Migration
       t.references :location, :null => false, :polymorphic => true
       t.integer :position, :null => false, :default => 0
       t.references :card, :null => false
+      t.integer :cooldown_counters, :null => false, :default => 0
 
       t.timestamps :null => false
     end

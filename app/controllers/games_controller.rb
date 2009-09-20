@@ -38,6 +38,18 @@ class GamesController < ResourceController::Base
     redirect_to object
   end
 
+  def attack
+    player = object.players.find_by_account_id(current_account.id)
+    
+    attacking_cards = player.equipped_cards
+
+    damage_array = attacking_cards.inject([]) do |array, card|
+      array += card.attack
+    end
+
+    render :text => damage_array
+  end
+
   create.before do
     object.join(current_account, current_account.deck_lists.first)
   end
