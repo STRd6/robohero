@@ -15,10 +15,34 @@ class GameCard < ActiveRecord::Base
     }}
   }
 
+  named_scope :equipped, lambda {|player_id|
+    {:conditions => {
+      :location_id => player_id,
+      :location_type => Robot::SLOT_TYPES,
+    }}
+  }
+
   delegate :name,
     :rules_text,
+    :attacks,
+    :activated_abilities,
     :flavor_text,
     :money_cost,
     :energy_cost,
     :to => :card
+
+  def attack
+    transaction do
+      #if cooldown_counters == 0
+        selected_attack = attacks.first
+        if selected_attack
+          self.cooldown_counters += selected_attack.cost_array.first.last
+          save!
+          return selected_attack.damage_array
+        end
+      #end
+
+      return []
+    end
+  end
 end

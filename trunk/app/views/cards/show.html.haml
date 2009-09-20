@@ -9,13 +9,13 @@
 - if @card.parsed_rules_text
   %p
     %strong Parsed:
-    - @card.parsed_rules_text.attacks.each do |attack|
+    - @card.attacks.each do |attack|
       Attack:
       = icon_list attack.cost_array
       == :
       = icon_list attack.damage_array
       = debug attack.cost_array
-    - @card.parsed_rules_text.activated_abilities.each do |activated_ability|
+    - @card.activated_abilities.each do |activated_ability|
       = icon_list activated_ability.cost_array
         
       == :

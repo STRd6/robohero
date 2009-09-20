@@ -12,4 +12,20 @@ class Card < ActiveRecord::Base
   def parsed_rules_text
     @parsed_rules_text ||= RoboHeroParser.new.parse(rules_text)
   end
+
+  def attacks
+    if parsed_rules_text
+      parsed_rules_text.attacks
+    else
+      []
+    end
+  end
+
+  def activated_abilities
+    if parsed_rules_text
+      parsed_rules_text.activated_abilities
+    else
+      []
+    end
+  end
 end

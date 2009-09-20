@@ -73,12 +73,13 @@ ActiveRecord::Schema.define(:version => 20090906224246) do
   end
 
   create_table "game_cards", :force => true do |t|
-    t.integer  "location_id",                  :null => false
-    t.string   "location_type",                :null => false
-    t.integer  "position",      :default => 0, :null => false
-    t.integer  "card_id",                      :null => false
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.integer  "location_id",                      :null => false
+    t.string   "location_type",                    :null => false
+    t.integer  "position",          :default => 0, :null => false
+    t.integer  "card_id",                          :null => false
+    t.integer  "cooldown_counters", :default => 0, :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   add_index "game_cards", ["location_id", "location_type"], :name => "index_game_cards_on_location_id_and_location_type"

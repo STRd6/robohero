@@ -44,6 +44,10 @@ class Player < ActiveRecord::Base
     GameCard.in_slot(id, slot_type, position)
   end
 
+  def equipped_cards
+    GameCard.equipped(id)
+  end
+
   def deploy(game_card, slot_type, slot_id)
     transaction do
       self.money -= game_card.money_cost
