@@ -1,6 +1,6 @@
 grammar RoboHero
   rule rules_data
-    keyword_ability* attack_elements:attack* activated_ability_elements:activated_ability* {
+    attack_elements:attack* keyword_abilities_elements:keyword_ability* activated_ability_elements:activated_ability* {
       def attacks
         attack_elements.elements
       end
@@ -8,15 +8,36 @@ grammar RoboHero
       def activated_abilities
         activated_ability_elements.elements
       end
+
+      def keyword_abilities
+        keyword_abilities_elements.elemens
+      end
     }
   end
 
   rule keyword_ability
-    "[" "]"
+    "[" keyword params:(" " keyword_param:([0-9] ([a-zA-Z0-9_])*))* "]"
+  end
+
+  rule keyword
+    "Armor Piercing" /
+    [a-zA-Z]+
   end
 
   rule attack
-    "[Attack " activated_ability "]"
+    "[Attack " costs ": " damage "]" {
+      def cost_array
+        costs.cost_array
+      end
+
+      def damage_array
+        [[damage.damage_type.text_value + "_damage", damage.damage_value.text_value.to_i]]
+      end
+    }
+  end
+
+  rule damage
+    damage_value:([1-9]+ [0-9]*) damage_type:[A-Z]
   end
 
   rule activated_ability
@@ -62,6 +83,6 @@ grammar RoboHero
   end
 
   rule effect
-    [a-zA-Z0-9_ \.]*
+    [a-zA-Z0-9_+ \.]+
   end
 end

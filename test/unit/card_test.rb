@@ -28,4 +28,24 @@ class CardTest < ActiveSupport::TestCase
       end
     end
   end
+
+  context "parsing" do
+    should "Parse All cards correctly" do
+      cards = Card.all
+      correct = 0
+      
+      cards.each do |card|
+        success = card.parsed_rules_text
+        if success
+          correct += 1
+          puts "P: #{card.rules_text}"
+        else
+          puts "F: #{card.rules_text}"
+        end
+        
+      end
+
+      puts "PARSED: #{correct}/#{cards.size}"
+    end
+  end
 end
