@@ -9,31 +9,16 @@ module RoboHero
   end
 
   module RulesData0
-    def attack_elements
+    def attacks
       elements[0]
     end
 
-    def keyword_abilities_elements
+    def activated_abilities
       elements[1]
-    end
-
-    def activated_ability_elements
-      elements[2]
     end
   end
 
   module RulesData1
-    def attacks
-      attack_elements.elements
-    end
-
-    def activated_abilities
-      activated_ability_elements.elements
-    end
-
-    def keyword_abilities
-      keyword_abilities_elements.elemens
-    end
   end
 
   def _nt_rules_data
@@ -59,7 +44,7 @@ module RoboHero
     if r1
       s3, i3 = [], index
       loop do
-        r4 = _nt_keyword_ability
+        r4 = _nt_activated_ability
         if r4
           s3 << r4
         else
@@ -68,19 +53,6 @@ module RoboHero
       end
       r3 = instantiate_node(SyntaxNode,input, i3...index, s3)
       s0 << r3
-      if r3
-        s5, i5 = [], index
-        loop do
-          r6 = _nt_activated_ability
-          if r6
-            s5 << r6
-          else
-            break
-          end
-        end
-        r5 = instantiate_node(SyntaxNode,input, i5...index, s5)
-        s0 << r5
-      end
     end
     if s0.last
       r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
@@ -96,205 +68,11 @@ module RoboHero
     r0
   end
 
-  module KeywordAbility0
-  end
-
-  module KeywordAbility1
-    def keyword_param
-      elements[1]
-    end
-  end
-
-  module KeywordAbility2
-    def keyword
-      elements[1]
-    end
-
-    def params
-      elements[2]
-    end
-
-  end
-
-  def _nt_keyword_ability
-    start_index = index
-    if node_cache[:keyword_ability].has_key?(index)
-      cached = node_cache[:keyword_ability][index]
-      @index = cached.interval.end if cached
-      return cached
-    end
-
-    i0, s0 = index, []
-    if has_terminal?("[", false, index)
-      r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
-      @index += 1
-    else
-      terminal_parse_failure("[")
-      r1 = nil
-    end
-    s0 << r1
-    if r1
-      r2 = _nt_keyword
-      s0 << r2
-      if r2
-        s3, i3 = [], index
-        loop do
-          i4, s4 = index, []
-          if has_terminal?(" ", false, index)
-            r5 = instantiate_node(SyntaxNode,input, index...(index + 1))
-            @index += 1
-          else
-            terminal_parse_failure(" ")
-            r5 = nil
-          end
-          s4 << r5
-          if r5
-            i6, s6 = index, []
-            if has_terminal?('\G[0-9]', true, index)
-              r7 = true
-              @index += 1
-            else
-              r7 = nil
-            end
-            s6 << r7
-            if r7
-              s8, i8 = [], index
-              loop do
-                if has_terminal?('\G[a-zA-Z0-9_]', true, index)
-                  r9 = true
-                  @index += 1
-                else
-                  r9 = nil
-                end
-                if r9
-                  s8 << r9
-                else
-                  break
-                end
-              end
-              r8 = instantiate_node(SyntaxNode,input, i8...index, s8)
-              s6 << r8
-            end
-            if s6.last
-              r6 = instantiate_node(SyntaxNode,input, i6...index, s6)
-              r6.extend(KeywordAbility0)
-            else
-              @index = i6
-              r6 = nil
-            end
-            s4 << r6
-          end
-          if s4.last
-            r4 = instantiate_node(SyntaxNode,input, i4...index, s4)
-            r4.extend(KeywordAbility1)
-          else
-            @index = i4
-            r4 = nil
-          end
-          if r4
-            s3 << r4
-          else
-            break
-          end
-        end
-        r3 = instantiate_node(SyntaxNode,input, i3...index, s3)
-        s0 << r3
-        if r3
-          if has_terminal?("]", false, index)
-            r10 = instantiate_node(SyntaxNode,input, index...(index + 1))
-            @index += 1
-          else
-            terminal_parse_failure("]")
-            r10 = nil
-          end
-          s0 << r10
-        end
-      end
-    end
-    if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-      r0.extend(KeywordAbility2)
-    else
-      @index = i0
-      r0 = nil
-    end
-
-    node_cache[:keyword_ability][start_index] = r0
-
-    r0
-  end
-
-  def _nt_keyword
-    start_index = index
-    if node_cache[:keyword].has_key?(index)
-      cached = node_cache[:keyword][index]
-      @index = cached.interval.end if cached
-      return cached
-    end
-
-    i0 = index
-    if has_terminal?("Armor Piercing", false, index)
-      r1 = instantiate_node(SyntaxNode,input, index...(index + 14))
-      @index += 14
-    else
-      terminal_parse_failure("Armor Piercing")
-      r1 = nil
-    end
-    if r1
-      r0 = r1
-    else
-      s2, i2 = [], index
-      loop do
-        if has_terminal?('\G[a-zA-Z]', true, index)
-          r3 = true
-          @index += 1
-        else
-          r3 = nil
-        end
-        if r3
-          s2 << r3
-        else
-          break
-        end
-      end
-      if s2.empty?
-        @index = i2
-        r2 = nil
-      else
-        r2 = instantiate_node(SyntaxNode,input, i2...index, s2)
-      end
-      if r2
-        r0 = r2
-      else
-        @index = i0
-        r0 = nil
-      end
-    end
-
-    node_cache[:keyword][start_index] = r0
-
-    r0
-  end
-
   module Attack0
-    def costs
+    def activated_ability
       elements[1]
     end
 
-    def damage
-      elements[3]
-    end
-
-  end
-
-  module Attack1
-    def cost_array
-      costs.cost_array
-    end
-
-    def damage_array
-      [[damage.damage_type.text_value + "_damage", damage.damage_value.text_value.to_i]]
-    end
   end
 
   def _nt_attack
@@ -315,135 +93,28 @@ module RoboHero
     end
     s0 << r1
     if r1
-      r2 = _nt_costs
+      r2 = _nt_activated_ability
       s0 << r2
       if r2
-        if has_terminal?(": ", false, index)
-          r3 = instantiate_node(SyntaxNode,input, index...(index + 2))
-          @index += 2
+        if has_terminal?("]", false, index)
+          r3 = instantiate_node(SyntaxNode,input, index...(index + 1))
+          @index += 1
         else
-          terminal_parse_failure(": ")
+          terminal_parse_failure("]")
           r3 = nil
         end
         s0 << r3
-        if r3
-          r4 = _nt_damage
-          s0 << r4
-          if r4
-            if has_terminal?("]", false, index)
-              r5 = instantiate_node(SyntaxNode,input, index...(index + 1))
-              @index += 1
-            else
-              terminal_parse_failure("]")
-              r5 = nil
-            end
-            s0 << r5
-          end
-        end
       end
     end
     if s0.last
       r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
       r0.extend(Attack0)
-      r0.extend(Attack1)
     else
       @index = i0
       r0 = nil
     end
 
     node_cache[:attack][start_index] = r0
-
-    r0
-  end
-
-  module Damage0
-  end
-
-  module Damage1
-    def damage_value
-      elements[0]
-    end
-
-    def damage_type
-      elements[1]
-    end
-  end
-
-  def _nt_damage
-    start_index = index
-    if node_cache[:damage].has_key?(index)
-      cached = node_cache[:damage][index]
-      @index = cached.interval.end if cached
-      return cached
-    end
-
-    i0, s0 = index, []
-    i1, s1 = index, []
-    s2, i2 = [], index
-    loop do
-      if has_terminal?('\G[1-9]', true, index)
-        r3 = true
-        @index += 1
-      else
-        r3 = nil
-      end
-      if r3
-        s2 << r3
-      else
-        break
-      end
-    end
-    if s2.empty?
-      @index = i2
-      r2 = nil
-    else
-      r2 = instantiate_node(SyntaxNode,input, i2...index, s2)
-    end
-    s1 << r2
-    if r2
-      s4, i4 = [], index
-      loop do
-        if has_terminal?('\G[0-9]', true, index)
-          r5 = true
-          @index += 1
-        else
-          r5 = nil
-        end
-        if r5
-          s4 << r5
-        else
-          break
-        end
-      end
-      r4 = instantiate_node(SyntaxNode,input, i4...index, s4)
-      s1 << r4
-    end
-    if s1.last
-      r1 = instantiate_node(SyntaxNode,input, i1...index, s1)
-      r1.extend(Damage0)
-    else
-      @index = i1
-      r1 = nil
-    end
-    s0 << r1
-    if r1
-      if has_terminal?('\G[A-Z]', true, index)
-        r6 = true
-        @index += 1
-      else
-        r6 = nil
-      end
-      s0 << r6
-    end
-    if s0.last
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-      r0.extend(Damage1)
-    else
-      @index = i0
-      r0 = nil
-    end
-
-    node_cache[:damage][start_index] = r0
 
     r0
   end
@@ -764,10 +435,11 @@ module RoboHero
 
     s0, i0 = [], index
     loop do
-      if has_terminal?('\G[a-zA-Z0-9_+ \\.]', true, index)
-        r1 = true
+      if index < input_length
+        r1 = instantiate_node(SyntaxNode,input, index...(index + 1))
         @index += 1
       else
+        terminal_parse_failure("any character")
         r1 = nil
       end
       if r1
@@ -776,12 +448,7 @@ module RoboHero
         break
       end
     end
-    if s0.empty?
-      @index = i0
-      r0 = nil
-    else
-      r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
-    end
+    r0 = instantiate_node(SyntaxNode,input, i0...index, s0)
 
     node_cache[:effect][start_index] = r0
 
