@@ -27,7 +27,7 @@ $(function(){
       var slot_type = $(this).children('p').html();
       var position = $(this).children('.position').html();
 
-      $.post(url + 'games/' + gameId + '/played/' + id, $.extend({
+      $.post(url + 'games/' + gameId + '/deploy/' + id, $.extend({
         slot_type: slot_type,
         position: position
       }, data), callback());
@@ -70,7 +70,7 @@ $(function(){
   }
 
   declareAttacks = function() {
-    $.post('/games/' + gameId + '/attack/0',
+    $.post('/games/' + gameId + '/attack',
       $.extend(getAttackDeclarationParams(), data)
     )
   }

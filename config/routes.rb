@@ -21,7 +21,8 @@ ActionController::Routing::Routes.draw do |map|
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
 
   map.with_options :controller => 'games' do |games|
-    games.game_event  'games/:id/:action/:target_id'
+    games.game_event  'games/:id/:action/:card_id'
+    games.attack 'games/:id/attack', :action => 'attack'
   end
 
   # Sample resource route with sub-resources:
