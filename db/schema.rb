@@ -97,13 +97,18 @@ ActiveRecord::Schema.define(:version => 20090906224246) do
   add_index "game_events", ["game_id"], :name => "index_game_events_on_game_id"
 
   create_table "games", :force => true do |t|
-    t.string   "name",                         :null => false
-    t.boolean  "open",       :default => true, :null => false
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.string   "name",                                 :null => false
+    t.string   "state",                                :null => false
+    t.boolean  "public",             :default => true, :null => false
+    t.integer  "rotation_offset",    :default => 0,    :null => false
+    t.integer  "turn",               :default => 0,    :null => false
+    t.integer  "active_player_id"
+    t.integer  "priority_player_id"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
-  add_index "games", ["open"], :name => "index_games_on_open"
+  add_index "games", ["public"], :name => "index_games_on_public"
 
   create_table "link_events", :force => true do |t|
     t.integer  "link_id",                  :null => false
