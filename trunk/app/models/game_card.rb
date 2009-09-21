@@ -4,6 +4,8 @@ class GameCard < ActiveRecord::Base
   belongs_to :location, :polymorphic => true
   belongs_to :card
 
+  validates_numericality_of :cooldown_counters, :greater_than_or_equal_to => 0
+
   named_scope :in_hand, lambda {|player_id| {:conditions => {:location_id => player_id, :location_type => "Hand"}}}
   named_scope :in_deck, lambda {|player_id| {:conditions => {:location_id => player_id, :location_type => "Deck"}}}
   named_scope :in_discard, lambda {|player_id| {:conditions => {:location_id => player_id, :location_type => "Discard"}}}
@@ -33,16 +35,21 @@ class GameCard < ActiveRecord::Base
 
   def attack
     transaction do
-      #if cooldown_counters == 0
+      if cooldown_counters == 0
         selected_attack = attacks.first
         if selected_attack
           self.cooldown_counters += selected_attack.cost_array.first.last
           save!
           return selected_attack.damage_array
         end
-      #end
+      end
 
       return []
     end
+  end
+
+  def upkeep
+    self.cooldown_counters = [cooldown_counters - 1, 0].max
+    save!
   end
 end

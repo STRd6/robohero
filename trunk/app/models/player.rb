@@ -66,6 +66,8 @@ class Player < ActiveRecord::Base
     draw 1
     self.money += income
     self.energy += egen
+
+    equipped_cards.each(&:upkeep)
     save!
   end
 
