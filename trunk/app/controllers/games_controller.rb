@@ -5,7 +5,9 @@ class GamesController < ResourceController::Base
   before_filter :login_required, :ensure_deck_list, :except => [:show, :index]
 
   before_filter :ensure_priority, :except => [:new, :join, :create, :show, :index, :start]
+  before_filter :ensure_active, :except => [:new, :join, :create, :show, :index, :start]
   before_filter :ensure_main_phase, :only => :played
+  before_filter :ensure_attack_phase, :only => :attack
 
   helper_method :is_priority_player?
 
@@ -33,7 +35,6 @@ class GamesController < ResourceController::Base
   end
 
   def played
-    #TODO: verify phase
     game_card = requesting_player.cards_in_hand.find(params[:target_id])
     
     requesting_player.deploy(game_card, params[:slot_type], params[:position])
@@ -46,17 +47,18 @@ class GamesController < ResourceController::Base
   end
 
   def attack
-    #TODO: verify phase
-    player = object.players.find_by_account_id(current_account.id)
+    params[:attack_declarations].each do |player_id, weapons|
+      target_player = object.players.find(player_id)
+      attacking_cards = object.active_player.equipped_cards.find(weapons)
 
-    #TODO: Select from params
-    attacking_cards = player.equipped_cards
+      damage_array = attacking_cards.inject([]) do |array, card|
+        array += card.attack
+      end
 
-    damage_array = attacking_cards.inject([]) do |array, card|
-      array += card.attack
+      target_player.receive_damage(damage_array)
     end
-
-    render :text => damage_array
+    
+    redirect_to object
   end
 
   create.before do
@@ -75,6 +77,13 @@ class GamesController < ResourceController::Base
     end
   end
 
+  def ensure_attack_phase
+    unless object.attack_phase?
+      flash[:error] = "Not in attack phase!"
+      redirect_to object
+    end
+  end
+
   def ensure_priority
     unless is_priority_player?
       flash[:error] = "You do not have priority!"
@@ -82,7 +91,18 @@ class GamesController < ResourceController::Base
     end
   end
 
+  def ensure_active
+    unless is_active_player?
+      flash[:error] = "You are not the active player!"
+      redirect_to object
+    end
+  end
+
   def is_priority_player?
     object.priority_player == requesting_player
+  end
+
+  def is_active_player?
+    object.active_player == requesting_player
   end
 end
