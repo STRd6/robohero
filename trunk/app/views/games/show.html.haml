@@ -3,8 +3,20 @@
 .detail
   %h1= "detail"
 
-= link_to "Start Game", :action => "start", :id => @game.id
-= link_to "Begin Turn", :action => "begin_turn", :id => @game.id
+Phase:
+= @game.state
+- if @game.active_player
+  == #{@game.active_player.name}'s Turn
+- if @game.priority_player
+  - if is_priority_player?
+    You have priority
+    = link_to "Pass Priority", :action => "pass_priority", :id => @game.id
+  - else
+    = @game.priority_player.name
+    has priority
+- if @game.open?
+  = link_to "Start Game", :action => "start", :id => @game.id
+
 
 - @game.players.each do |player|
   = render :partial => 'player', :locals => {:player => player}

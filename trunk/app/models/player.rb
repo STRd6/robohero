@@ -62,8 +62,9 @@ class Player < ActiveRecord::Base
     end
   end
 
-  def begin_turn
-    self.money += game.income
+  def do_upkeep(income)
+    draw 1
+    self.money += income
     self.energy += egen
     save!
   end
