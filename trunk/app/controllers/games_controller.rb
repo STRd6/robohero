@@ -6,7 +6,7 @@ class GamesController < ResourceController::Base
 
   before_filter :ensure_priority, :except => [:new, :join, :create, :show, :index, :start]
   before_filter :ensure_active, :except => [:new, :join, :create, :show, :index, :start]
-  before_filter :ensure_main_phase, :only => :played
+  before_filter :ensure_main_phase, :only => :deploy
   before_filter :ensure_attack_phase, :only => :attack
 
   helper_method :is_priority_player?
@@ -17,16 +17,6 @@ class GamesController < ResourceController::Base
     redirect_to object
   end
 
-  def discard
-    #TODO: verify phase
-    object.discard(GameCard.find(params[:target_id]))
-    render :ok
-  end
-
-  def draw
-    object.players.find(params[:target_id]).draw(1)
-  end
-
   def join
     object.join(current_account, current_account.deck_lists.first)
     object.save!
@@ -34,10 +24,20 @@ class GamesController < ResourceController::Base
     redirect_to object
   end
 
-  def played
-    game_card = requesting_player.cards_in_hand.find(params[:target_id])
+  def deploy
+    game_card = requesting_player.cards_in_hand.find(params[:card_id])
     
     requesting_player.deploy(game_card, params[:slot_type], params[:position])
+
+    redirect_to object
+  end
+
+  def instant
+    game_card = requesting_player.cards_in_hand.find(params[:card_id])
+
+    requesting_player.play(game_card)
+
+    redirect_to object
   end
 
   def pass_priority
