@@ -68,6 +68,19 @@ class Player < ActiveRecord::Base
     self.energy += egen
     save!
   end
+
+  def receive_damage(damage_array)
+    total = 0;
+    damage_array.each do |type, amount|
+      total += amount
+    end
+
+    net_damage = [0, total - armor].max
+
+    self.health -= net_damage
+
+    save!
+  end
   
   def create_deck
     deck_list.cards.each do |card|
