@@ -14,7 +14,10 @@ class GamesController < ResourceController::Base
   def start
     object.begin_game
     object.save!
-    redirect_to object
+
+    render_to_game do |page|
+      page.call :alert, "Hi"
+    end
   end
 
   def join
@@ -104,5 +107,10 @@ class GamesController < ResourceController::Base
 
   def is_active_player?
     object.active_player == requesting_player
+  end
+
+  def render_to_game(&block)
+    render({:juggernaut => {:type => :send_to_channels, :channels => [object.channel]}}, {}, &block)
+    render :nothing
   end
 end
