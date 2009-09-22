@@ -40,11 +40,12 @@ class ApplicationController < ActionController::Base
   def ensure_deck_list
     if current_account && current_account.deck_lists.first
       if current_account.deck_lists.first.valid?
+        true
       else
-
+        false
       end
     else
-
+      false
     end
   end
 end

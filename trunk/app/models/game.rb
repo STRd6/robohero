@@ -83,6 +83,10 @@ class Game < ActiveRecord::Base
     2
   end
 
+  def channel
+    :"game_#{id}"
+  end
+
   private
   def set_active_player
     next_player_index = (turn + rotation_offset) % players.size
