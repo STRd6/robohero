@@ -6,18 +6,19 @@
   %h1= "detail"
 
 Phase:
-= @game.state
+.gameState
+  = @game.state
 - if @game.active_player
   == #{@game.active_player.name}'s Turn
 - if @game.priority_player
   - if is_priority_player?
     You have priority
-    = link_to "Pass Priority", :action => "pass_priority", :id => @game.id
+    = link_to "Pass Priority", {:action => "pass_priority", :id => @game.id}, :class => 'ajaxAction'
   - else
     = @game.priority_player.name
     has priority
 - if @game.open?
-  = link_to "Start Game", :action => "start", :id => @game.id
+  = link_to "Start Game", {:action => "start", :id => @game.id}, :class => 'ajaxAction'
 
 
 - @game.players.each do |player|
