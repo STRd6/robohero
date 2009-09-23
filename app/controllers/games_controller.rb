@@ -16,7 +16,7 @@ class GamesController < ResourceController::Base
     object.save!
 
     render_to_game do |page|
-      page.call :alert, "Hi"
+      page.call "$('.gameState').html", object.state
     end
   end
 
@@ -46,7 +46,10 @@ class GamesController < ResourceController::Base
   def pass_priority
     object.pass_priority
     object.save!
-    redirect_to object
+
+    render_to_game do |page|
+      page.call "$('.gameState').html", object.state
+    end
   end
 
   def attack
@@ -111,6 +114,6 @@ class GamesController < ResourceController::Base
 
   def render_to_game(&block)
     render({:juggernaut => {:type => :send_to_channels, :channels => [object.channel]}}, {}, &block)
-    render :nothing
+    render :nothing => true
   end
 end

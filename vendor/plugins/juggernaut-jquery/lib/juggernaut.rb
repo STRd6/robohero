@@ -141,15 +141,23 @@ module Juggernaut
       # We can't protect these as ActionMailer complains
       # protected
 
-        def render_with_juggernaut(options = nil, old_local_assigns={}, &block)
+        def render_with_juggernaut(options = nil, extra_options = {}, &block)
           if options == :juggernaut or (options.is_a?(Hash) and options[:juggernaut])
-            add_variables_to_assigns
-            @template.send! :evaluate_assigns
+            begin
+              if @template.respond_to?(:_evaluate_assigns_and_ivars, true)
+                @template.send(:_evaluate_assigns_and_ivars)
+              else
+                @template.send(:evaluate_assigns)
+              end
 
-            generator = ActionView::Helpers::PrototypeHelper::JavaScriptGenerator.new(@template, &block)
-            render_for_juggernaut(generator.to_s, options.is_a?(Hash) ? options[:juggernaut] : nil)
+              generator = ActionView::Helpers::PrototypeHelper::JavaScriptGenerator.new(@template, &block)
+              render_for_juggernaut(generator.to_s, options.is_a?(Hash) ? options[:juggernaut] : nil)
+            ensure
+              erase_render_results
+              reset_variables_added_to_assigns
+            end
           else
-            render_without_juggernaut(options, old_local_assigns, &block)
+            render_without_juggernaut(options, extra_options, &block)
           end
         end
 

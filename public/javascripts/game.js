@@ -74,4 +74,9 @@ $(function(){
       $.extend(getAttackDeclarationParams(), data)
     )
   }
+
+  $('.ajaxAction').click(function() {
+    $.post($(this).attr('href'));
+    return false;
+  });
 });
