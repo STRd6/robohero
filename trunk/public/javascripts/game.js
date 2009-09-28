@@ -73,7 +73,28 @@ $(function(){
     $.post('/games/' + gameId + '/attack',
       $.extend(getAttackDeclarationParams(), data)
     )
-  }
+  };
+
+  var update = {
+    player: function(data) {
+      console.log(data);
+    }
+  };
+
+  updateElements = function(data) {
+    console.log('updateElements');
+    console.log(data);
+    $.each(data, function(i, object){
+      console.log('Object');
+      console.log(object);
+      $.each(object, function(key, value) {
+        console.log('Hash');
+        console.log(key);
+        console.log(value);
+        update[key](value);
+      });
+    });
+  };
 
   $('.ajaxAction').click(function() {
     $.post($(this).attr('href'));
