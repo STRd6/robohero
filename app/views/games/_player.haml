@@ -32,7 +32,7 @@
 
   .hand
     %h1= "hand"
-    - if player.account_id == current_account.id
+    - if current_account && player.account_id == current_account.id
       - player.cards_in_hand.each do |card|
         = render :partial => 'card', :object => card
 

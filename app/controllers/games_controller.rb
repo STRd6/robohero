@@ -32,7 +32,9 @@ class GamesController < ResourceController::Base
     
     requesting_player.deploy(game_card, params[:slot_type], params[:position])
 
-    redirect_to object
+    render_to_game do |page|
+      #TODO: update card/players info
+    end
   end
 
   def instant
@@ -49,10 +51,13 @@ class GamesController < ResourceController::Base
 
     render_to_game do |page|
       page.call "$('.gameState').html", object.state
+      #TODO: Update players info as needed
     end
   end
 
   def attack
+    targetted_players = []
+
     params[:attack_declarations].each do |player_id, weapons|
       target_player = object.players.find(player_id)
       attacking_cards = object.active_player.equipped_cards.find(weapons)
@@ -62,9 +67,13 @@ class GamesController < ResourceController::Base
       end
 
       target_player.receive_damage(damage_array)
+
+      targetted_players << target_player
     end
-    
-    redirect_to object
+
+    render_to_game do |page|
+      page.call :updateElements, targetted_players
+    end
   end
 
   create.before do
@@ -73,7 +82,7 @@ class GamesController < ResourceController::Base
 
   private
   def requesting_player
-    object.players.find_by_account_id(current_account.id)
+    object.players.find_by_account_id(current_account.id) if current_account
   end
 
   def ensure_main_phase
@@ -112,8 +121,8 @@ class GamesController < ResourceController::Base
     object.active_player == requesting_player
   end
 
-  def render_to_game(&block)
+  def render_to_game(render_nothing=true, &block)
     render({:juggernaut => {:type => :send_to_channels, :channels => [object.channel]}}, {}, &block)
-    render :nothing => true
+    render :nothing => true if render_nothing
   end
 end

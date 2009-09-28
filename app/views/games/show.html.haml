@@ -20,6 +20,8 @@ Phase:
 - if @game.open?
   = link_to "Start Game", {:action => "start", :id => @game.id}, :class => 'ajaxAction'
 
+= link_to_function "Attack", "declareAttacks();"
+
 
 - @game.players.each do |player|
   = render :partial => 'player', :locals => {:player => player}
