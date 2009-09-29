@@ -82,7 +82,18 @@ $(function(){
 
       // Update attributes
       $.each(['money', 'energy', 'health', 'armor'], function(i, attribute) {
-        player.find('.number.'+ attribute).html(data[attribute]);
+        player.find('.number.' + attribute).html(data[attribute]);
+      });
+    },
+
+    game_card: function(data) {
+      console.log(data);
+      var gameCard = $('#game_card_' + data['id']);
+
+      //TODO: Move or display in the correct location
+
+      $.each(['cooldown_counters'], function(i, attribute) {
+        gameCard.find('.number.' + attribute).html(data[attribute]);
       });
     }
   };
