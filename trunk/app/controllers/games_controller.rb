@@ -33,7 +33,8 @@ class GamesController < ResourceController::Base
     requesting_player.deploy(game_card, params[:slot_type], params[:position])
 
     render_to_game do |page|
-      #TODO: update card/players info
+      page.call :updateElements, object.players
+      page.call :updateElements, [game_card]
     end
   end
 
@@ -51,13 +52,13 @@ class GamesController < ResourceController::Base
 
     render_to_game do |page|
       page.call "$('.gameState').html", object.state
-      #TODO: Update players info as needed
+      
+      #TODO: Update players info only as needed
+      page.call :updateElements, object.players
     end
   end
 
   def attack
-    targetted_players = []
-
     params[:attack_declarations].each do |player_id, weapons|
       target_player = object.players.find(player_id)
       attacking_cards = object.active_player.equipped_cards.find(weapons)
@@ -67,12 +68,10 @@ class GamesController < ResourceController::Base
       end
 
       target_player.receive_damage(damage_array)
-
-      targetted_players << target_player
     end
 
     render_to_game do |page|
-      page.call :updateElements, targetted_players
+      page.call :updateElements, object.players
     end
   end
 

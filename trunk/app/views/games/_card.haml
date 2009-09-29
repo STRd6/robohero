@@ -1,14 +1,14 @@
-.card
+.card[card]
   .titlebar
     %strong= card.name
     %span.costs
       - if card.energy_cost > 0
-        = card.energy_cost
+        %strong.number.energy_cost= card.energy_cost
         .icon.energy
       - if card.money_cost > 0
-        = card.money_cost
+        %strong.number.money_cost= card.money_cost
         .icon.money
-  %strong= card.cooldown_counters
+  %strong.number.cooldown_counters= card.cooldown_counters
   .icon.cooldown
   .textbox
     %p= render :partial => 'cards/parsed_data', :locals => {:card => card}
