@@ -1,16 +1,15 @@
 .player[player]
   %h1= player.name
-  - form_tag do
-    %p
-      .icon.health
-      = text_field_tag "health", player.health, {:size=>'3'}
-      .icon.money
-      = text_field_tag "money", player.money, {:size=>'3'}
-    %p
-      .icon.energy
-      = text_field_tag "energy", player.energy, {:size=>'3'}
-      .icon.armor
-      = text_field_tag 'armor', player.armor, {:size=>'3'}
+  %p
+    .icon.health
+    .number.health= player.health
+    .icon.armor
+    .number.armor= player.armor
+  %p
+    .icon.money
+    .number.money= player.money
+    .icon.energy
+    .number.energy= player.energy
 
   - Robot::SLOT_TYPES.each do |slot_type|
     - player.send("#{slot_type}_slots").times do |i|

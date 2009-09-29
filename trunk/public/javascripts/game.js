@@ -78,19 +78,18 @@ $(function(){
   var update = {
     player: function(data) {
       console.log(data);
+      var player = $('#player_' + data['id']);
+
+      // Update attributes
+      $.each(['money', 'energy', 'health', 'armor'], function(i, attribute) {
+        player.find('.number.'+ attribute).html(data[attribute]);
+      });
     }
   };
 
   updateElements = function(data) {
-    console.log('updateElements');
-    console.log(data);
     $.each(data, function(i, object){
-      console.log('Object');
-      console.log(object);
       $.each(object, function(key, value) {
-        console.log('Hash');
-        console.log(key);
-        console.log(value);
         update[key](value);
       });
     });
