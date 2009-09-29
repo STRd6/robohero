@@ -121,8 +121,13 @@ class GamesController < ResourceController::Base
     object.active_player == requesting_player
   end
 
-  def render_to_game(render_nothing=true, &block)
+  def render_to_game(&block)
     render({:juggernaut => {:type => :send_to_channels, :channels => [object.channel]}}, {}, &block)
-    render :nothing => true if render_nothing
+
+    if request.xhr?
+      render :nothing => true
+    else
+      redirect_to object
+    end
   end
 end
