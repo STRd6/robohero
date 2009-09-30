@@ -107,7 +107,7 @@ $(function(){
   };
 
   $('.ajaxAction').click(function() {
-    $.post($(this).attr('href'));
+    $.post($(this).attr('href'), data);
     return false;
   });
 });
